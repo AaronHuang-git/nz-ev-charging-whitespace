@@ -1,0 +1,43 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# dbt
+.dbt/
+target/
+dbt_packages/
+logs/
+profiles.yml
+
+# Secrets
+.env
+*.pem
+*.p8
+*.key
+
+# Power BI binary (keep PBIP folder, not PBIX)
+*.pbix
+
+# Power BI PBIP local state (per-user / cache, regenerates on open)
+powerbi/**/.pbi/
+powerbi/**/cache.abf
+
+# Office lock files (created when a workbook/doc is open)
+~$*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# DuckDB scratch
+*.duckdb
+
+# Large external downloads — keep small reference files only
+data/external/*.zip
+data/external/*.7z

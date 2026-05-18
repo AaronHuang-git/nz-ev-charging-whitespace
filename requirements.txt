@@ -1,0 +1,11 @@
+dbt-core==1.8.7
+dbt-snowflake==1.8.4
+sqlfluff==3.2.5
+sqlfluff-templater-dbt==3.2.5
+geopandas==1.0.1
+shapely==2.0.6
+snowflake-connector-python[pandas]==3.12.3
+openpyxl==3.1.5
+python-pptx==1.0.2
+python-docx==1.1.2
+python-dotenv==1.0.1
