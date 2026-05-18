@@ -1,0 +1,129 @@
+version: 2
+
+models:
+  - name: slv_vehicles__classified
+    description: "MVR vehicles enriched with ev_category classification and canonical TA. One row per vehicle. Vehicles with non-TA tla_raw (e.g. 'OTHER', '8-GEAR AUTO') keep NULL canonical fields and get filtered in Gold."
+    columns:
+      - name: vehicle_id
+        data_tests:
+          - not_null
+          - unique
+      - name: ev_category
+        description: "BEV / PHEV / HEV / FCEV / ICE per classify_ev_category macro."
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['BEV', 'PHEV', 'HEV', 'FCEV', 'ICE']
+      - name: canonical_ta_name
+        description: "Joined from seed_ta_name_map.mvr_tla. NULL for the 2 MVR data-entry oddities (OTHER, 8-GEAR AUTO)."
+
+  - name: slv_stations__connectors_exploded
+    description: "One row per connector type at each EV Roam station, parsed from connectors_list_raw. Some stations have multiple connector types (CHAdeMO + Type 2 CCS), some have none parsed (NULL connectors_list_raw — excluded)."
+    columns:
+      - name: station_id
+        data_tests:
+          - not_null
+      - name: connector_seq
+        data_tests:
+          - not_null
+      - name: current_type
+        data_tests:
+          - accepted_values:
+              values: ['AC', 'DC']
+              config:
+                severity: warn   # If parsing produces anything else, surface it.
+      - name: is_operative
+        data_tests:
+          - not_null
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [station_id, connector_seq]
+
+  - name: slv_stations__capacity
+    description: "Station-level rollup of operative connector capacity. One row per station. Drives AFIR kW calculations in Gold."
+    columns:
+      - name: station_id
+        data_tests:
+          - not_null
+          - unique
+      - name: total_operative_kw
+        description: "Sum of (kW x connector_count) across operative connectors."
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 5000
+      - name: has_dc_fast
+        data_tests:
+          - not_null
+      - name: has_ultrafast
+        data_tests:
+          - not_null
+
+  - name: slv_population__ta_canonical
+    description: "Stats NZ population estimates joined to canonical TA via seed. One row per (canonical_ta_name, year_as_at). 67 TAs x 3 years = 201 rows expected."
+    columns:
+      - name: canonical_ta_name
+        data_tests:
+          - not_null
+      - name: year_as_at
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [2018, 2023, 2024]
+      - name: population
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 2500000
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [canonical_ta_name, year_as_at]
+
+  - name: slv_stations__ta_assigned
+    description: "Stations enriched with TA via spatial point-in-polygon join against LINZ boundaries. Applies seed_evroam_overrides for known bad coordinates. One row per station."
+    columns:
+      - name: station_id
+        data_tests:
+          - not_null
+          - unique
+      - name: canonical_ta_name
+        description: "TA the station's coordinates fall within. NULL if no polygon contains the point (would indicate offshore/bad coordinate)."
+      - name: ta_code
+        description: "LINZ TA code (e.g. '076' for Auckland)."
+      - name: is_overridden
+        description: "True if seed_evroam_overrides corrected this station's coordinates."
+        data_tests:
+          - not_null
+    data_tests:
+      # Defensive — every station must land in a NZ TA. If this fails, either the
+      # override seed has a gap or LINZ has missing polygon coverage.
+      - dbt_utils.expression_is_true:
+          expression: "ta_code is not null"
+          config:
+            severity: warn
+
+  - name: slv_station_distance
+    description: "Pairwise great-circle distances between stations (nearest 5 per station). 407 stations -> 2,035 rows. Powers the highway-gap analysis in Gold."
+    columns:
+      - name: station_id
+        data_tests:
+          - not_null
+      - name: nearest_station_id
+        data_tests:
+          - not_null
+      - name: distance_km
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 2500
+      - name: rank_nearest
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [station_id, rank_nearest]
