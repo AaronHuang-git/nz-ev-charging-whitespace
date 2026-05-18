@@ -1,0 +1,415 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "24df5fd0d5e02a41b57a",
+  "position": {
+    "x": 24,
+    "y": 104,
+    "z": 6001,
+    "height": 440,
+    "width": 656,
+    "tabOrder": 6001
+  },
+  "visual": {
+    "visualType": "shapeMap",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_GEOGRAPHY"
+                    }
+                  },
+                  "Property": "LINZ_TA_NAME"
+                }
+              },
+              "queryRef": "DIM_GEOGRAPHY.LINZ_TA_NAME",
+              "nativeQueryRef": "TA",
+              "displayName": "TA"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_SUPPLY_DEMAND__BY_TA_YEAR"
+                        }
+                      },
+                      "Property": "CUM_BEV_PHEV_COUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_SUPPLY_DEMAND__BY_TA_YEAR.CUM_BEV_PHEV_COUNT)",
+              "nativeQueryRef": "Total EVs",
+              "displayName": "Total EVs"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_SUPPLY_DEMAND__BY_TA_YEAR"
+                        }
+                      },
+                      "Property": "CUM_STATION_COUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_SUPPLY_DEMAND__BY_TA_YEAR.CUM_STATION_COUNT)",
+              "nativeQueryRef": "Total Stations",
+              "displayName": "Total Stations"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_SUPPLY_DEMAND__BY_TA_YEAR"
+                        }
+                      },
+                      "Property": "POPULATION"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_SUPPLY_DEMAND__BY_TA_YEAR.POPULATION)",
+              "nativeQueryRef": "Population",
+              "displayName": "Population"
+            }
+          ]
+        },
+        "Value": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_SUPPLY_DEMAND__BY_TA_YEAR"
+                        }
+                      },
+                      "Property": "AFIR_COVERAGE_RATIO"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(AGG_SUPPLY_DEMAND__BY_TA_YEAR.AFIR_COVERAGE_RATIO)",
+              "nativeQueryRef": "AFIR Coverage Ratio (x)",
+              "displayName": "AFIR Coverage Ratio (x)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "shape": [
+        {
+          "properties": {
+            "map": {
+              "geoJson": {
+                "type": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'packaged'"
+                    }
+                  }
+                },
+                "name": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'nz_ta_2023.json'"
+                    }
+                  }
+                },
+                "content": {
+                  "expr": {
+                    "ResourcePackageItem": {
+                      "PackageName": "RegisteredResources",
+                      "PackageType": 1,
+                      "ItemName": "nz_ta_20239127884264100783.json"
+                    }
+                  }
+                }
+              }
+            },
+            "projectionEnum": {
+              "expr": {
+                "Literal": {
+                  "Value": "'albersUsa'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fillRule": {
+              "linearGradient2": {
+                "min": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#E39393'"
+                      }
+                    }
+                  }
+                },
+                "max": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#11D725'"
+                      }
+                    }
+                  }
+                },
+                "nullColoringStrategy": {
+                  "strategy": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'asZero'"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'NZ State of EV Charging'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "85D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e725dbf697dbfcb46b26",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_SUPPLY_DEMAND__BY_TA_YEAR"
+                  }
+                },
+                "Property": "AFIR_COVERAGE_RATIO"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a06995a5a99e3a4c6022",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DIM_GEOGRAPHY"
+              }
+            },
+            "Property": "LINZ_TA_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a61bc32b7d149f4f0d50",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_SUPPLY_DEMAND__BY_TA_YEAR"
+                  }
+                },
+                "Property": "POPULATION"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "11b16f2b5b552b63616d",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_SUPPLY_DEMAND__BY_TA_YEAR"
+                  }
+                },
+                "Property": "CUM_BEV_PHEV_COUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3ebc19df2b30cf8caa80",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_SUPPLY_DEMAND__BY_TA_YEAR"
+                  }
+                },
+                "Property": "CUM_STATION_COUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "e990ee359798dd491e52",
+  "position": {
+    "x": 24,
+    "y": 536,
+    "z": 7000,
+    "height": 168,
+    "width": 744,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "ChargeNet leads with ~50% of national kW capacity, but the market remains fragmented across 9 operators. There is still no dominant Goliath — a #2 entrant has clear commercial runway, especially in TAs where ChargeNet has limited presence (cross-reference Page 2 whitespace).",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontStyle": "italic",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,195 @@
+table AGG_NATIONAL_SUMMARY__BY_YEAR
+	lineageTag: 7d12783c-423c-46a6-b3b8-1bba08addf58
+
+	column YEAR_AS_AT
+		dataType: double
+		formatString: 0
+		lineageTag: 02357658-8750-42f9-99a6-ba0c759e9f26
+		summarizeBy: sum
+		sourceColumn: YEAR_AS_AT
+
+		annotation SummarizationSetBy = Automatic
+
+	column NATIONAL_POPULATION
+		dataType: double
+		lineageTag: 59ff21e8-4b7e-4741-94c2-6f401303794c
+		summarizeBy: sum
+		sourceColumn: NATIONAL_POPULATION
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_BEV_COUNT
+		dataType: double
+		lineageTag: fdfe89bb-f392-4eb1-8ca9-06a0db2db82d
+		summarizeBy: sum
+		sourceColumn: NATIONAL_BEV_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_PHEV_COUNT
+		dataType: double
+		lineageTag: e6f5890c-0e01-4709-b21d-ae9ba4d63aec
+		summarizeBy: sum
+		sourceColumn: NATIONAL_PHEV_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_BEV_PHEV_COUNT
+		dataType: double
+		lineageTag: 64bd23f6-7aca-4ac8-bd92-a54817e934c0
+		summarizeBy: sum
+		sourceColumn: NATIONAL_BEV_PHEV_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_STATION_COUNT
+		dataType: double
+		lineageTag: 447ffb23-398c-4620-8d27-dd3a02338f8b
+		summarizeBy: sum
+		sourceColumn: NATIONAL_STATION_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_CONNECTOR_COUNT
+		dataType: double
+		lineageTag: 6780339a-1376-41fa-a4fd-91f864c5745c
+		summarizeBy: sum
+		sourceColumn: NATIONAL_CONNECTOR_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_TOTAL_KW
+		dataType: double
+		lineageTag: 9013c7a7-8a23-442d-a6f9-c70cd7cee8ea
+		summarizeBy: sum
+		sourceColumn: NATIONAL_TOTAL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_DC_FAST_COUNT
+		dataType: double
+		lineageTag: 0dcbf5d6-b1a5-4f39-94e2-aa11b8628c1c
+		summarizeBy: sum
+		sourceColumn: NATIONAL_DC_FAST_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_ULTRAFAST_COUNT
+		dataType: double
+		lineageTag: ac76395b-15fe-48cd-88c4-9ddc48c9be12
+		summarizeBy: sum
+		sourceColumn: NATIONAL_ULTRAFAST_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_AFIR_REQUIRED_KW
+		dataType: double
+		lineageTag: 77215191-c024-4934-9686-5fc0bc942c66
+		summarizeBy: sum
+		sourceColumn: NATIONAL_AFIR_REQUIRED_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_AFIR_ACTUAL_KW
+		dataType: double
+		lineageTag: 958f3a50-9514-4b6a-adee-5397e0d15d5c
+		summarizeBy: sum
+		sourceColumn: NATIONAL_AFIR_ACTUAL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_AFIR_SURPLUS_KW
+		dataType: double
+		lineageTag: 588c9365-5dcd-4651-be4b-0162d53946cd
+		summarizeBy: sum
+		sourceColumn: NATIONAL_AFIR_SURPLUS_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_AFIR_SHORTFALL_KW
+		dataType: double
+		lineageTag: 5487662e-dac4-4b8b-81a4-5ca1e468a2a0
+		summarizeBy: sum
+		sourceColumn: NATIONAL_AFIR_SHORTFALL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_AFIR_COVERAGE_RATIO
+		dataType: double
+		lineageTag: 84702cbc-70f6-4259-a464-d84f3a6f4c17
+		summarizeBy: sum
+		sourceColumn: NATIONAL_AFIR_COVERAGE_RATIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NZ_TARGET_2030
+		dataType: double
+		lineageTag: b2f8b02f-ac21-424d-acb2-9840ef7df77a
+		summarizeBy: sum
+		sourceColumn: NZ_TARGET_2030
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NATIONAL_EVS_PER_CONNECTOR
+		dataType: double
+		lineageTag: 091bdcbf-6823-44d9-873c-a42d30750ebc
+		summarizeBy: sum
+		sourceColumn: NATIONAL_EVS_PER_CONNECTOR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NZ_TARGET_PROGRESS_RATIO
+		dataType: double
+		lineageTag: e045278b-f8a7-4000-a7c5-8fcb475c6832
+		summarizeBy: sum
+		sourceColumn: NZ_TARGET_PROGRESS_RATIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition AGG_NATIONAL_SUMMARY__BY_YEAR = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    AGG_NATIONAL_SUMMARY__BY_YEAR_Table = GOLD_Schema{[Name="AGG_NATIONAL_SUMMARY__BY_YEAR",Kind="Table"]}[Data]
+				in
+				    AGG_NATIONAL_SUMMARY__BY_YEAR_Table
+
+	annotation PBI_ResultType = Table
+

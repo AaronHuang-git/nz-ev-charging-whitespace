@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "4a02792edd1ccf440387",
+  "position": {
+    "x": 24,
+    "y": 652,
+    "z": 10000,
+    "height": 56,
+    "width": 1232,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Insight: Used JDM imports (Nissan Leaf dominant pre-2020, MG ZS EV / BYD / Tesla Model 3 rising post-2021) skew NZ's BEV fleet toward CHAdeMO connectors. Operators serving this mix need dual-format stations (CHAdeMO + Type 2 CCS) to capture both old and new vehicles.",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontStyle": "italic",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

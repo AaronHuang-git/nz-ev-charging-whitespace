@@ -1,0 +1,181 @@
+table AGG_WHITESPACE_RANKING__CURRENT_YEAR
+	lineageTag: 35aeff31-8b8a-4b40-9051-fa3b4e588343
+
+	column CANONICAL_TA_NAME
+		dataType: string
+		lineageTag: 0b616b1d-2020-42d1-ae50-4e4b1890ebfc
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: CANONICAL_TA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_NAME
+		dataType: string
+		lineageTag: f8190bed-17f5-43d5-a564-1366c9f4fa45
+		summarizeBy: none
+		sourceColumn: REGION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISLAND
+		dataType: string
+		lineageTag: fa724a9a-7e89-4aaf-9047-0315b3bb100e
+		summarizeBy: none
+		sourceColumn: ISLAND
+
+		annotation SummarizationSetBy = Automatic
+
+	column POPULATION
+		dataType: double
+		formatString: 0
+		lineageTag: a2acb988-d8db-4889-a31b-dd0650da4aab
+		summarizeBy: sum
+		sourceColumn: POPULATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_BEV_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: 3e114954-0bda-4427-88d5-696d46b9db0f
+		summarizeBy: sum
+		sourceColumn: CUM_BEV_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_PHEV_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: 6f5571a4-4f48-40bb-83f5-f8c2ed474cb6
+		summarizeBy: sum
+		sourceColumn: CUM_PHEV_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_BEV_PHEV_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: b464fdec-bbea-4f08-a187-d0259b3788bf
+		summarizeBy: sum
+		sourceColumn: CUM_BEV_PHEV_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_CONNECTOR_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: b666562e-2936-4e0e-a2b0-ac91d41f56c4
+		summarizeBy: sum
+		sourceColumn: CUM_CONNECTOR_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_TOTAL_KW
+		dataType: double
+		formatString: 0
+		lineageTag: 3c65c3b2-56f1-4449-a17c-72b60e9a3fb0
+		summarizeBy: sum
+		sourceColumn: CUM_TOTAL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+	column AFIR_REQUIRED_KW
+		dataType: double
+		lineageTag: fa5c6e22-f30e-4af5-9486-ecfe494a10e8
+		summarizeBy: sum
+		sourceColumn: AFIR_REQUIRED_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AFIR_ACTUAL_KW
+		dataType: double
+		lineageTag: 38d2fbc1-81d2-44aa-8837-fadf70835a7c
+		summarizeBy: sum
+		sourceColumn: AFIR_ACTUAL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AFIR_SHORTFALL_KW
+		dataType: double
+		lineageTag: 8b963f9a-d041-412a-a23e-0736cae9dffe
+		summarizeBy: sum
+		sourceColumn: AFIR_SHORTFALL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AFIR_COVERAGE_RATIO
+		dataType: double
+		formatString: 0.00
+		lineageTag: 12862831-c741-4565-89e8-e4e0144eecf9
+		summarizeBy: sum
+		sourceColumn: AFIR_COVERAGE_RATIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column BEV_PHEV_PER_1K_POP
+		dataType: double
+		lineageTag: 738e6e02-c704-44fd-9f2c-d702c226bdea
+		summarizeBy: sum
+		sourceColumn: BEV_PHEV_PER_1K_POP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONNECTORS_PER_1K_POP
+		dataType: double
+		lineageTag: 567b330d-b4dd-4b00-95c5-14640b444be7
+		summarizeBy: sum
+		sourceColumn: CONNECTORS_PER_1K_POP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RANK_BY_AFIR_SHORTFALL
+		dataType: double
+		formatString: 0
+		lineageTag: 9c7ed664-dcdb-4ec6-ab22-cc586b578739
+		summarizeBy: sum
+		sourceColumn: RANK_BY_AFIR_SHORTFALL
+
+		annotation SummarizationSetBy = Automatic
+
+	column RANK_BY_LOW_COVERAGE
+		dataType: double
+		formatString: 0
+		lineageTag: 49eae276-ab9a-4063-926b-cc0739cd3b21
+		summarizeBy: sum
+		sourceColumn: RANK_BY_LOW_COVERAGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column RANK_BY_LOW_CONNECTORS_PER_CAPITA
+		dataType: double
+		formatString: 0
+		lineageTag: fe7c12f6-0a2f-4be4-9ee0-55a300d75c85
+		summarizeBy: sum
+		sourceColumn: RANK_BY_LOW_CONNECTORS_PER_CAPITA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AGG_WHITESPACE_RANKING__CURRENT_YEAR = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    AGG_WHITESPACE_RANKING__CURRENT_YEAR_Table = GOLD_Schema{[Name="AGG_WHITESPACE_RANKING__CURRENT_YEAR",Kind="Table"]}[Data]
+				in
+				    AGG_WHITESPACE_RANKING__CURRENT_YEAR_Table
+
+	annotation PBI_ResultType = Table
+

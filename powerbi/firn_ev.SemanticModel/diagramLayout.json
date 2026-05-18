@@ -1,0 +1,217 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 23.333333333333336,
+        "y": 285
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 908.108881936555,
+            "y": 1292.651007754135
+          },
+          "nodeIndex": "AGG_HIGHWAY_GAP__CURRENT",
+          "nodeLineageTag": "5db68231-947c-487c-bc67-58ee2b6ae58f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1192.6983226653131,
+            "y": 1078.3860995549255
+          },
+          "nodeIndex": "AGG_NATIONAL_SUMMARY__BY_YEAR",
+          "nodeLineageTag": "7d12783c-423c-46a6-b3b8-1bba08addf58",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1179.7753635783881,
+            "y": 1677.9591778498307
+          },
+          "nodeIndex": "AGG_OPERATOR_LANDSCAPE__CURRENT",
+          "nodeLineageTag": "f99ea0e2-fa86-4267-bce3-f2b1e5fa9ce8",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1666.2821136137077,
+            "y": 1077.3552437747603
+          },
+          "nodeIndex": "AGG_SUPPLY_DEMAND__BY_TA_YEAR",
+          "nodeLineageTag": "139aaadd-0257-4f44-be8b-498024e0b1da",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1106.6552471829912,
+            "y": 377.29253557583979
+          },
+          "nodeIndex": "AGG_WHITESPACE_RANKING__CURRENT_YEAR",
+          "nodeLineageTag": "35aeff31-8b8a-4b40-9051-fa3b4e588343",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 1693.8396796300162
+          },
+          "nodeIndex": "DIM_CONNECTOR_TYPE",
+          "nodeLineageTag": "88c03233-52b7-4b4d-8ba0-161b402aaedb",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1939.2821136137077,
+            "y": 1008.674981733998
+          },
+          "nodeIndex": "DIM_DATE",
+          "nodeLineageTag": "7169604a-9ca2-451a-8db4-f33204576c48",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1000.8425855637331,
+            "y": 731.02410166530922
+          },
+          "nodeIndex": "DIM_GEOGRAPHY",
+          "nodeLineageTag": "5055a83f-a84a-4618-bf69-2bd54930f635",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 882.85625960811569,
+            "y": 1818.9191182760494
+          },
+          "nodeIndex": "DIM_STATION_OPERATOR",
+          "nodeLineageTag": "9accc701-a290-4635-8a38-aaed31dedf75",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 461.92246569960434,
+            "y": 449.0975118586133
+          },
+          "nodeIndex": "DIM_VEHICLE_MODEL",
+          "nodeLineageTag": "0cea1838-e04a-4da2-8763-7f1d9e2cb9c5",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1466.7384476098623,
+            "y": 1431.2856371582016
+          },
+          "nodeIndex": "FCT_CHARGING_STATION",
+          "nodeLineageTag": "42adad6e-1839-4ca7-98b4-d80c3044d18b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 337.10819701443165,
+            "y": 1537.5546472232661
+          },
+          "nodeIndex": "FCT_STATION_CONNECTOR",
+          "nodeLineageTag": "67a2b7a6-1725-419e-88ad-35af662727a6",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 622.33649812094109,
+            "y": 1554.4009172068554
+          },
+          "nodeIndex": "FCT_STATION_DISTANCE",
+          "nodeLineageTag": "7931c668-95da-40be-bbbb-dc074d632104",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 752.14714160119343,
+            "y": 422.22832854476155
+          },
+          "nodeIndex": "FCT_VEHICLE_REGISTRATION",
+          "nodeLineageTag": "5b9629a4-2a28-42c1-b129-e40a8cb04509",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2173.2821136137077,
+            "y": 874.09749966227537
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "6ee1033b-6d6d-4e8f-9e2d-fc98f4822ca3",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 60,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

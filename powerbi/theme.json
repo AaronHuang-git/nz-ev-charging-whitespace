@@ -1,0 +1,48 @@
+{
+  "name": "NZ EV Whitespace",
+  "background": "#FFFFFF",
+  "foreground": "#1A1A1A",
+  "foregroundNeutralSecondary": "#5C5C5C",
+  "foregroundNeutralTertiary": "#8C8C8C",
+  "backgroundLight": "#F8F9FA",
+  "backgroundNeutral": "#EFF1F3",
+  "tableAccent": "#2C5F7C",
+  "dataColors": [
+    "#2C5F7C",
+    "#D97757",
+    "#7B9F35",
+    "#A04050",
+    "#4A6E8A",
+    "#C9A227",
+    "#5C8378",
+    "#8B6FA1"
+  ],
+  "good": "#2CA02C",
+  "neutral": "#F0AD4E",
+  "bad": "#D62728",
+  "minimum": "#D62728",
+  "center": "#FFCC00",
+  "maximum": "#2CA02C",
+  "textClasses": {
+    "title": {
+      "fontSize": 20,
+      "fontFace": "Segoe UI",
+      "color": "#1A1A1A"
+    },
+    "header": {
+      "fontSize": 14,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#1A1A1A"
+    },
+    "label": {
+      "fontSize": 11,
+      "fontFace": "Segoe UI",
+      "color": "#1A1A1A"
+    },
+    "callout": {
+      "fontSize": 36,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#2C5F7C"
+    }
+  }
+}

@@ -1,0 +1,217 @@
+table FCT_CHARGING_STATION
+	lineageTag: 42adad6e-1839-4ca7-98b4-d80c3044d18b
+
+	column STATION_ID
+		dataType: string
+		lineageTag: 9ffa4075-a4f9-40dc-92a8-5434c25d03a3
+		summarizeBy: none
+		sourceColumn: STATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPERATOR_KEY
+		dataType: string
+		lineageTag: 81f74701-1d4d-4ce9-b15e-a33379e63a11
+		summarizeBy: none
+		sourceColumn: OPERATOR_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column TA_KEY
+		dataType: string
+		lineageTag: ffb65d58-2fd2-428b-b649-01171d43d22d
+		summarizeBy: none
+		sourceColumn: TA_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_OPERATIONAL_DATE_KEY
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 32b45c46-a2ca-4070-ab49-df70e9cb55e1
+		summarizeBy: none
+		sourceColumn: FIRST_OPERATIONAL_DATE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column STATION_NAME
+		dataType: string
+		lineageTag: f9cb22fd-77a4-434e-8ed9-c3eb8fc3dd4f
+		summarizeBy: none
+		sourceColumn: STATION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADDRESS
+		dataType: string
+		lineageTag: 47083390-72a0-4870-94aa-68607c45503b
+		summarizeBy: none
+		sourceColumn: ADDRESS
+
+		annotation SummarizationSetBy = Automatic
+
+	column LATITUDE
+		dataType: double
+		lineageTag: 6462b2a9-ffc1-4638-a724-5cfa87fa7382
+		summarizeBy: sum
+		sourceColumn: LATITUDE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LONGITUDE
+		dataType: double
+		lineageTag: 6f4d9a83-3193-4a5c-b8fd-e0b99f11eaf4
+		summarizeBy: sum
+		sourceColumn: LONGITUDE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CANONICAL_TA_NAME
+		dataType: string
+		lineageTag: 947f7511-703b-4e7f-a6ac-95c28b326bb5
+		summarizeBy: none
+		sourceColumn: CANONICAL_TA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_NAME
+		dataType: string
+		lineageTag: 70b7b784-9c48-4aa5-b339-cda7658cc753
+		summarizeBy: none
+		sourceColumn: REGION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISLAND
+		dataType: string
+		lineageTag: 5198899f-b0bc-4e9b-8277-d9770e4b7a7b
+		summarizeBy: none
+		sourceColumn: ISLAND
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_OVERRIDDEN
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 22cd77f5-1352-496b-b11c-bb38a77c47fc
+		summarizeBy: none
+		sourceColumn: IS_OVERRIDDEN
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPERATOR_NAME
+		dataType: string
+		lineageTag: 01feef2e-4a14-417d-9eaf-a3c28134bc8d
+		summarizeBy: none
+		sourceColumn: OPERATOR_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column REPORTED_CONNECTOR_COUNT
+		dataType: double
+		lineageTag: 9cfa1353-0652-49ed-a551-3ea17c46639f
+		summarizeBy: sum
+		sourceColumn: REPORTED_CONNECTOR_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OPERATIVE_CONNECTOR_COUNT
+		dataType: double
+		lineageTag: fd0c9c62-b102-4ce9-935c-470260c8dd63
+		summarizeBy: sum
+		sourceColumn: OPERATIVE_CONNECTOR_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_OPERATIVE_KW
+		dataType: double
+		lineageTag: 0e14e3f6-f76e-4dce-bd8b-13c482bc2c25
+		summarizeBy: sum
+		sourceColumn: TOTAL_OPERATIVE_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MAX_OPERATIVE_KW
+		dataType: double
+		lineageTag: 8aa0d467-48c3-4c43-9057-23434921debd
+		summarizeBy: sum
+		sourceColumn: MAX_OPERATIVE_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DC_FAST_CONNECTOR_COUNT
+		dataType: double
+		lineageTag: 7a960fb7-8916-4f76-9c80-2ba5f97c356f
+		summarizeBy: sum
+		sourceColumn: DC_FAST_CONNECTOR_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ULTRAFAST_CONNECTOR_COUNT
+		dataType: double
+		lineageTag: 7fd91730-5764-46a9-bbc1-4fec91424357
+		summarizeBy: sum
+		sourceColumn: ULTRAFAST_CONNECTOR_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HAS_DC_FAST
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: be200c1e-4853-4d36-b822-85edf211747e
+		summarizeBy: none
+		sourceColumn: HAS_DC_FAST
+
+		annotation SummarizationSetBy = Automatic
+
+	column HAS_ULTRAFAST
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 65fedb36-32d2-4ef5-a529-69a90673aca4
+		summarizeBy: none
+		sourceColumn: HAS_ULTRAFAST
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Operational Year' = YEAR ( 'FCT_CHARGING_STATION'[FIRST_OPERATIONAL_DATE_KEY] )
+		formatString: 0
+		lineageTag: 019530aa-c650-4876-9aab-e7bad57b66b6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FCT_CHARGING_STATION = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com", "FIRN_EV_XS_WH"),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    QueryResult = Value.NativeQuery(
+				        FIRN_EV_DEV_Database,
+				        "SELECT station_id, operator_key, ta_key, first_operational_date_key, station_name, address, latitude, longitude, canonical_ta_name, region_name, island, is_overridden, operator_name, reported_connector_count, operative_connector_count, total_operative_kw, max_operative_kw, dc_fast_connector_count, ultrafast_connector_count, has_dc_fast, has_ultrafast FROM GOLD.FCT_CHARGING_STATION"
+				    )
+				in
+				    QueryResult
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

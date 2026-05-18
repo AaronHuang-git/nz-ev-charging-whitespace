@@ -1,0 +1,548 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "0a8ccbc7f21a5cb6cc48",
+  "position": {
+    "x": 24,
+    "y": 192,
+    "z": 5000,
+    "height": 328,
+    "width": 744,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                    }
+                  },
+                  "Property": "OPERATOR_NAME"
+                }
+              },
+              "queryRef": "AGG_OPERATOR_LANDSCAPE__CURRENT.OPERATOR_NAME",
+              "nativeQueryRef": "Operator",
+              "displayName": "Operator"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "STATION_COUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.STATION_COUNT)",
+              "nativeQueryRef": "Sites",
+              "displayName": "Sites"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "DC_FAST_STATION_COUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.DC_FAST_STATION_COUNT)",
+              "nativeQueryRef": "DC Fast",
+              "displayName": "DC Fast"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "ULTRAFAST_STATION_COUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.ULTRAFAST_STATION_COUNT)",
+              "nativeQueryRef": "Ultrafast",
+              "displayName": "Ultrafast"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "CONNECTOR_COUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.CONNECTOR_COUNT)",
+              "nativeQueryRef": "Connectors",
+              "displayName": "Connectors"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "TOTAL_KW"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.TOTAL_KW)",
+              "nativeQueryRef": "Total kW",
+              "displayName": "Total kW"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "TAS_COVERED"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.TAS_COVERED)",
+              "nativeQueryRef": "TAs Covered",
+              "displayName": "TAs Covered"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "SHARE_OF_NATIONAL_KW"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.SHARE_OF_NATIONAL_KW)",
+              "nativeQueryRef": "kW Share",
+              "displayName": "kW Share"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                      }
+                    },
+                    "Property": "TOTAL_KW"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77.76343311778841D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_VEHICLE_MODEL.EV_CATEGORY"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118.69585884240075D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_VEHICLE_MODEL.MODEL"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "122.83103336214936D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_VEHICLE_MODEL.MAKE"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "60.763444374510875D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Vehicle Count"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "85D"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "dcb05e6f68677066d6e0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+              }
+            },
+            "Property": "OPERATOR_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2d0d2fdd4a5a82f93df3",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "STATION_COUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5c35059d4882c506adc6",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "CONNECTOR_COUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "192ce831fdf7ff777f89",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "TOTAL_KW"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6422c23e59e4b59a8f3a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "TAS_COVERED"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d88fe204e231e141229a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "SHARE_OF_NATIONAL_KW"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "28a1491f0bc67be1628f",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "DC_FAST_STATION_COUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ad35b22da44454fc6c8e",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "ULTRAFAST_STATION_COUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

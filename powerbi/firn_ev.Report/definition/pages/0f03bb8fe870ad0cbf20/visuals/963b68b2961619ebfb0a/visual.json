@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "963b68b2961619ebfb0a",
+  "position": {
+    "x": 24,
+    "y": 656,
+    "z": 10000,
+    "height": 56,
+    "width": 1232,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Insight: ~50% of NZ connectors are DC fast (≥50 kW), but only ~6% are ultra-fast (≥150 kW) — the build-out lags Tesla and BYD's onboard charging capability. CCS Type 2 now dominates new installs; CHAdeMO presence reflects the Nissan Leaf legacy install base.",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontStyle": "italic",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

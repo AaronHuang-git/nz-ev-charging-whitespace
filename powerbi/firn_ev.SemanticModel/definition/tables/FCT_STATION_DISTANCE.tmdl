@@ -1,0 +1,84 @@
+table FCT_STATION_DISTANCE
+	lineageTag: 7931c668-95da-40be-bbbb-dc074d632104
+
+	column STATION_ID
+		dataType: string
+		lineageTag: 4c0db73d-43a3-4353-a3bf-0d78513c55e5
+		summarizeBy: none
+		sourceColumn: STATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NEAREST_STATION_ID
+		dataType: string
+		lineageTag: 19f2d9ed-1953-4ba0-a589-3bc4daafba54
+		summarizeBy: none
+		sourceColumn: NEAREST_STATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RANK_NEAREST
+		dataType: double
+		lineageTag: 957f47b1-2625-4bf1-80a5-4f7266886205
+		summarizeBy: sum
+		sourceColumn: RANK_NEAREST
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISTANCE_KM
+		dataType: double
+		lineageTag: c9e057f5-637e-45b9-95d3-b4cd4f2e4fc7
+		summarizeBy: sum
+		sourceColumn: DISTANCE_KM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OPERATOR_KEY
+		dataType: string
+		lineageTag: 5b113cce-afa1-4b25-94fb-ffc767f0de59
+		summarizeBy: none
+		sourceColumn: OPERATOR_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column TA_KEY
+		dataType: string
+		lineageTag: dc4d3419-1ebc-477f-b78b-6cb34bcb4d57
+		summarizeBy: none
+		sourceColumn: TA_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column NEAREST_OPERATOR_KEY
+		dataType: string
+		lineageTag: 6f499e01-329b-42b0-9620-d13cae1ada1b
+		summarizeBy: none
+		sourceColumn: NEAREST_OPERATOR_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column NEAREST_TA_KEY
+		dataType: string
+		lineageTag: c4988bb6-fe28-411d-bea4-a0487a9ed474
+		summarizeBy: none
+		sourceColumn: NEAREST_TA_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FCT_STATION_DISTANCE = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    FCT_STATION_DISTANCE_Table = GOLD_Schema{[Name="FCT_STATION_DISTANCE",Kind="Table"]}[Data]
+				in
+				    FCT_STATION_DISTANCE_Table
+
+	annotation PBI_ResultType = Table
+

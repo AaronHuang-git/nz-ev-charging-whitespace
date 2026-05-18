@@ -1,0 +1,668 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "ed76613514e3a547f6d4",
+  "position": {
+    "x": 792,
+    "y": 96,
+    "z": 4000,
+    "height": 272,
+    "width": 456,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "treemap",
+    "query": {
+      "queryState": {
+        "Group": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                    }
+                  },
+                  "Property": "OPERATOR_NAME"
+                }
+              },
+              "queryRef": "AGG_OPERATOR_LANDSCAPE__CURRENT.OPERATOR_NAME",
+              "nativeQueryRef": "Operator",
+              "active": true,
+              "displayName": "Operator"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Arithmetic": {
+                  "Left": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                            }
+                          },
+                          "Property": "SHARE_OF_NATIONAL_CONNECTORS"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "Right": {
+                    "ScopedEval": {
+                      "Expression": {
+                        "Aggregation": {
+                          "Expression": {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                                }
+                              },
+                              "Property": "SHARE_OF_NATIONAL_CONNECTORS"
+                            }
+                          },
+                          "Function": 0
+                        }
+                      },
+                      "Scope": []
+                    }
+                  },
+                  "Operator": 3
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.SHARE_OF_NATIONAL_CONNECTORS)",
+              "nativeQueryRef": "Share of National Connectors",
+              "displayName": "Share of National Connectors"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "SHARE_OF_NATIONAL_KW"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.SHARE_OF_NATIONAL_KW)",
+              "nativeQueryRef": "Share of National kW",
+              "displayName": "Share of National kW"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "TAS_COVERED"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.TAS_COVERED)",
+              "nativeQueryRef": "TAs Covered",
+              "displayName": "TAs Covered"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "DC_FAST_STATION_COUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.DC_FAST_STATION_COUNT)",
+              "nativeQueryRef": "DC Fast Stations",
+              "displayName": "DC Fast Stations"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "ULTRAFAST_STATION_COUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.ULTRAFAST_STATION_COUNT)",
+              "nativeQueryRef": "Ultrafast Stations",
+              "displayName": "Ultrafast Stations"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                        }
+                      },
+                      "Property": "TOTAL_KW"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_OPERATOR_LANDSCAPE__CURRENT.TOTAL_KW)",
+              "nativeQueryRef": "Total kW Provided",
+              "displayName": "Total kW Provided"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "tilingMethod": {
+              "expr": {
+                "Literal": {
+                  "Value": "'stableSquarified'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                          }
+                        },
+                        "Property": "OPERATOR_NAME"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'ChargeNet NZ'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0.2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                          }
+                        },
+                        "Property": "OPERATOR_NAME"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'MERIDIAN ENERGY LIMITED'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#12D2DF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                          }
+                        },
+                        "Property": "OPERATOR_NAME"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Z Energy'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Operator share by total kW'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "85D"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ec1c156eb6e3fec609b3",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "SHARE_OF_NATIONAL_CONNECTORS"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "06f64f0a4e65f241b61b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+              }
+            },
+            "Property": "OPERATOR_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6a9934912b7bd94321d6",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "TOTAL_KW"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "72165b7808cf557f7f38",
+        "field": {
+          "Arithmetic": {
+            "Left": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                      }
+                    },
+                    "Property": "SHARE_OF_NATIONAL_CONNECTORS"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "Right": {
+              "ScopedEval": {
+                "Expression": {
+                  "Aggregation": {
+                    "Expression": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                          }
+                        },
+                        "Property": "SHARE_OF_NATIONAL_CONNECTORS"
+                      }
+                    },
+                    "Function": 0
+                  }
+                },
+                "Scope": []
+              }
+            },
+            "Operator": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d70b07c3665328b9f46b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "TAS_COVERED"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "435d4e84029db81e2f34",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "ULTRAFAST_STATION_COUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8bdd60af304ff98a2b42",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "DC_FAST_STATION_COUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "befd3e53b0d2901835a6",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_OPERATOR_LANDSCAPE__CURRENT"
+                  }
+                },
+                "Property": "SHARE_OF_NATIONAL_KW"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

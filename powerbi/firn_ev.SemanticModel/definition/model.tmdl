@@ -1,0 +1,34 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["AGG_HIGHWAY_GAP__CURRENT","AGG_NATIONAL_SUMMARY__BY_YEAR","AGG_OPERATOR_LANDSCAPE__CURRENT","AGG_SUPPLY_DEMAND__BY_TA_YEAR","AGG_WHITESPACE_RANKING__CURRENT_YEAR","DIM_CONNECTOR_TYPE","DIM_DATE","DIM_GEOGRAPHY","DIM_STATION_OPERATOR","DIM_VEHICLE_MODEL","FCT_CHARGING_STATION","FCT_STATION_CONNECTOR","FCT_STATION_DISTANCE","FCT_VEHICLE_REGISTRATION","_Measures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table AGG_HIGHWAY_GAP__CURRENT
+ref table AGG_NATIONAL_SUMMARY__BY_YEAR
+ref table AGG_OPERATOR_LANDSCAPE__CURRENT
+ref table AGG_SUPPLY_DEMAND__BY_TA_YEAR
+ref table AGG_WHITESPACE_RANKING__CURRENT_YEAR
+ref table DIM_CONNECTOR_TYPE
+ref table DIM_DATE
+ref table DateTableTemplate_671c774c-3e21-4929-ae7a-4650a2c41a3a
+ref table LocalDateTable_c0bef894-3f60-40d9-b2ed-61e7ad33dcff
+ref table DIM_GEOGRAPHY
+ref table DIM_STATION_OPERATOR
+ref table DIM_VEHICLE_MODEL
+ref table FCT_CHARGING_STATION
+ref table FCT_STATION_CONNECTOR
+ref table FCT_STATION_DISTANCE
+ref table FCT_VEHICLE_REGISTRATION
+ref table _Measures
+
+ref cultureInfo en-US
+

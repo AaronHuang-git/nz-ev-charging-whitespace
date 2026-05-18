@@ -1,0 +1,245 @@
+table AGG_SUPPLY_DEMAND__BY_TA_YEAR
+	lineageTag: 139aaadd-0257-4f44-be8b-498024e0b1da
+
+	column TA_KEY
+		dataType: string
+		lineageTag: cd80a59d-13e0-44ff-8dcf-bd0539d3da72
+		summarizeBy: none
+		sourceColumn: TA_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CANONICAL_TA_NAME
+		dataType: string
+		lineageTag: 41759604-62ab-47f1-980d-4070f9d15c4d
+		summarizeBy: none
+		sourceColumn: CANONICAL_TA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_NAME
+		dataType: string
+		lineageTag: d361d7b2-1943-4a6e-ada9-2dde7c09f831
+		summarizeBy: none
+		sourceColumn: REGION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISLAND
+		dataType: string
+		lineageTag: b54369c2-a0df-4aaf-9828-376a757dadb4
+		summarizeBy: none
+		sourceColumn: ISLAND
+
+		annotation SummarizationSetBy = Automatic
+
+	column TA_CODE
+		dataType: string
+		lineageTag: b9884eaf-eb59-4a55-8ab6-760cee67fb9d
+		summarizeBy: none
+		sourceColumn: TA_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR_AS_AT
+		dataType: double
+		formatString: 0
+		lineageTag: d6597b30-20dd-44cf-8617-6f4f2c43be10
+		summarizeBy: sum
+		sourceColumn: YEAR_AS_AT
+
+		annotation SummarizationSetBy = Automatic
+
+	column POPULATION
+		dataType: double
+		formatString: 0
+		lineageTag: 0f537fce-103b-4d98-99d7-6cac20a3a2cc
+		summarizeBy: sum
+		sourceColumn: POPULATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_BEV_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: dd38aae6-f740-4ab9-9516-44693cd9e1dc
+		summarizeBy: sum
+		sourceColumn: CUM_BEV_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_PHEV_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: 90d200c2-94e1-4553-8f00-8fc72c4eedbb
+		summarizeBy: sum
+		sourceColumn: CUM_PHEV_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_BEV_PHEV_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: 296a0680-b9cb-45e9-9bd4-22183ddeac0b
+		summarizeBy: sum
+		sourceColumn: CUM_BEV_PHEV_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_STATION_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: 8cfb13d0-1902-49e3-92d7-96ebfe68d4f0
+		summarizeBy: sum
+		sourceColumn: CUM_STATION_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_CONNECTOR_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: 331ecde0-1a32-4d5d-9600-606e58fb74aa
+		summarizeBy: sum
+		sourceColumn: CUM_CONNECTOR_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_TOTAL_KW
+		dataType: double
+		formatString: 0
+		lineageTag: 015aabf1-023d-42cc-b5da-e084eac7fac4
+		summarizeBy: sum
+		sourceColumn: CUM_TOTAL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_DC_FAST_STATION_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: 8b1ed4eb-fdf5-474e-9fad-21f5119d553e
+		summarizeBy: sum
+		sourceColumn: CUM_DC_FAST_STATION_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUM_ULTRAFAST_STATION_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: 8318da4d-2e96-4db0-8219-0a6ee6b52114
+		summarizeBy: sum
+		sourceColumn: CUM_ULTRAFAST_STATION_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column AFIR_REQUIRED_KW
+		dataType: double
+		lineageTag: 38bf7e63-a38b-4bd1-95fb-61404a38980b
+		summarizeBy: sum
+		sourceColumn: AFIR_REQUIRED_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AFIR_ACTUAL_KW
+		dataType: double
+		lineageTag: 9b94e52c-c3f4-47d1-a221-df2a0bb87c94
+		summarizeBy: sum
+		sourceColumn: AFIR_ACTUAL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AFIR_SURPLUS_KW
+		dataType: double
+		lineageTag: 887594e9-ce2d-4f82-ad51-7c81abad2980
+		summarizeBy: sum
+		sourceColumn: AFIR_SURPLUS_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AFIR_SHORTFALL_KW
+		dataType: double
+		lineageTag: f10dfe93-dd3c-456a-95fd-b23b003de432
+		summarizeBy: sum
+		sourceColumn: AFIR_SHORTFALL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AFIR_COVERAGE_RATIO
+		dataType: double
+		formatString: 0.0
+		lineageTag: 6b1d6f8c-e3c6-461c-8a94-5be2f0d47c99
+		summarizeBy: sum
+		sourceColumn: AFIR_COVERAGE_RATIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column EVS_PER_CONNECTOR_ACTUAL
+		dataType: double
+		lineageTag: 51bdac2d-0cf4-474b-93ae-d01caf91f821
+		summarizeBy: sum
+		sourceColumn: EVS_PER_CONNECTOR_ACTUAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EVS_PER_CONNECTOR_TARGET
+		dataType: double
+		lineageTag: d17684eb-264f-4e26-86e2-7c773ecccfe7
+		summarizeBy: sum
+		sourceColumn: EVS_PER_CONNECTOR_TARGET
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NZ_CONNECTOR_GAP_TO_TARGET
+		dataType: double
+		lineageTag: 855c51af-6aa5-4978-b6a0-b999a8bf1d2f
+		summarizeBy: sum
+		sourceColumn: NZ_CONNECTOR_GAP_TO_TARGET
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BEV_PHEV_PER_1K_POP
+		dataType: double
+		lineageTag: 2f6800bf-58b7-4b18-b6a4-34dc43af38e9
+		summarizeBy: sum
+		sourceColumn: BEV_PHEV_PER_1K_POP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONNECTORS_PER_1K_POP
+		dataType: double
+		lineageTag: b2996b09-79fc-4bee-9120-62ef94352b9a
+		summarizeBy: sum
+		sourceColumn: CONNECTORS_PER_1K_POP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition AGG_SUPPLY_DEMAND__BY_TA_YEAR = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    AGG_SUPPLY_DEMAND__BY_TA_YEAR_Table = GOLD_Schema{[Name="AGG_SUPPLY_DEMAND__BY_TA_YEAR",Kind="Table"]}[Data]
+				in
+				    AGG_SUPPLY_DEMAND__BY_TA_YEAR_Table
+
+	annotation PBI_ResultType = Table
+

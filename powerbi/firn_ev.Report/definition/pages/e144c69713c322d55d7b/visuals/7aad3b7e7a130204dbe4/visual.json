@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "7aad3b7e7a130204dbe4",
+  "position": {
+    "x": 20.438713798127779,
+    "y": 641.77561326121236,
+    "z": 8000,
+    "height": 78.484660984810674,
+    "width": 1229.5930220953674,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Distance metric: great-circle (straight line). Actual road distance on NZ's State Highway network is typically 30–50% longer due to mountainous terrain and route winding. A precise corridor-gap analysis would join the nearest-neighbour pairs to NZTA's State Highway centreline data — a recommended next analytical step.",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontStyle": "italic",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

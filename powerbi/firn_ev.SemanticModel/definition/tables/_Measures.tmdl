@@ -1,0 +1,323 @@
+table _Measures
+	lineageTag: 6ee1033b-6d6d-4e8f-9e2d-fc98f4822ca3
+
+	measure 'Vehicle Count' = SUM ( 'FCT_VEHICLE_REGISTRATION'[VEHICLE_COUNT] )
+		formatString: 0
+		lineageTag: 6d900e82-c464-4d54-9b45-d267d80bba96
+
+	measure 'BEV Count' =
+			
+			CALCULATE (
+			    SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_BEV_COUNT] ),
+			    'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] =
+			        SELECTEDVALUE ( 'DIM_DATE'[YEAR], 2024 )
+			)
+		formatString: 0
+		lineageTag: 6059ba2c-0af7-4a95-b959-76591c7d64f4
+
+	measure 'PHEV Count' =
+			
+			CALCULATE (
+			    SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_PHEV_COUNT] ),
+			    'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] =
+			        SELECTEDVALUE ( 'DIM_DATE'[YEAR], 2024 )
+			)
+		formatString: 0
+		lineageTag: 14bbd561-5d4d-41f3-8e7c-68668e250cc1
+
+	measure 'BEV + PHEV Count' = [BEV Count] + [PHEV Count]
+		formatString: 0
+		lineageTag: ce7c98dd-987d-4c1d-8f77-22805b32d942
+
+	measure 'Station Count' =
+			
+			CALCULATE (
+			    SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_STATION_COUNT] ),
+			    'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] =
+			        SELECTEDVALUE ( 'DIM_DATE'[YEAR], 2024 )
+			)
+		formatString: 0
+		lineageTag: c1362791-1c14-41cd-95f7-770a5eaa06b9
+
+	measure 'Connector Count' =
+			
+			CALCULATE (
+			    SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_CONNECTOR_COUNT] ),
+			    'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] =
+			        SELECTEDVALUE ( 'DIM_DATE'[YEAR], 2024 )
+			)
+		formatString: 0
+		lineageTag: a3db2982-a47a-4252-b418-d90e79a08636
+
+	measure 'Total kW' =
+			
+			CALCULATE (
+			    SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_TOTAL_KW] ),
+			    'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] =
+			        SELECTEDVALUE ( 'DIM_DATE'[YEAR], 2024 )
+			)
+		formatString: #,0
+		lineageTag: b7b74179-5c47-47be-a6c8-2e2edb6f9c60
+
+	measure 'DC Fast Site Count' =
+			
+			CALCULATE (
+			    SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_DC_FAST_COUNT] ),
+			    'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] =
+			        SELECTEDVALUE ( 'DIM_DATE'[YEAR], 2024 )
+			)
+		formatString: 0
+		lineageTag: f0e50321-e9d7-4109-a8f3-6e6249d00cd2
+
+	measure 'Ultrafast Site Count' =
+			
+			CALCULATE (
+			    SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_ULTRAFAST_COUNT] ),
+			    'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] =
+			        SELECTEDVALUE ( 'DIM_DATE'[YEAR], 2024 )
+			)
+		formatString: 0
+		lineageTag: c616838a-ad6d-4dd0-a265-9142ceaa89f2
+
+	measure 'AFIR Required kW' = 1.3 * [BEV Count] + 0.8 * [PHEV Count]
+		formatString: #,0
+		lineageTag: 40b22302-8a3c-482c-9fb6-cf64174f6130
+
+	measure 'AFIR Coverage Ratio' = DIVIDE ( [Total kW], [AFIR Required kW] )
+		formatString: 0.00
+		lineageTag: 8708feb6-af91-4ec7-85fe-24d06a822a94
+
+	measure 'AFIR Surplus kW' = [Total kW] - [AFIR Required kW]
+		formatString: #,0
+		lineageTag: fc036f88-b961-4ca9-856d-924e33494e10
+
+	measure 'EVs per Connector' =
+			
+			DIVIDE ( [BEV + PHEV Count], [Connector Count] )
+		formatString: 0.0
+		lineageTag: 3f77e290-1c5e-4cf6-893f-34136a265e32
+
+	measure 'NZ 2030 Target Progress %' =
+			
+			DIVIDE ( [Connector Count], 10000 )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: fab177bd-e9fe-495b-b03b-3dc3e735850e
+
+	measure 'Stations Over 75km' =
+			
+			CALCULATE (
+			    COUNTROWS ( 'AGG_HIGHWAY_GAP__CURRENT' ),
+			    'AGG_HIGHWAY_GAP__CURRENT'[BREACHES_LEGACY_75KM] = TRUE
+			) + 0
+		formatString: 0
+		lineageTag: 14e163b4-d773-4b69-a5a4-688228ca8caa
+
+	measure 'Stations Over 150km' =
+			
+			CALCULATE (
+			    COUNTROWS ( 'AGG_HIGHWAY_GAP__CURRENT' ),
+			    'AGG_HIGHWAY_GAP__CURRENT'[BREACHES_CURRENT_150KM] = TRUE
+			) + 0
+		formatString: 0
+		lineageTag: b3503543-77cf-495a-b1b9-0e50212b77d2
+
+	measure 'Max Distance to Nearest km' =
+			
+			MAX ( 'AGG_HIGHWAY_GAP__CURRENT'[DISTANCE_KM_TO_NEAREST] )
+		formatString: 0.0
+		lineageTag: 4284d5c9-93b4-4af1-9807-294e584d3e78
+
+	measure 'Operator kW Share' =
+			
+			SUM ( 'AGG_OPERATOR_LANDSCAPE__CURRENT'[SHARE_OF_NATIONAL_KW] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: df0e449b-1be8-4adc-bb28-df0294dd27f2
+
+	measure 'Operator Connector Share' =
+			
+			SUM ( 'AGG_OPERATOR_LANDSCAPE__CURRENT'[SHARE_OF_NATIONAL_CONNECTORS] )
+		formatString: 0.00
+		lineageTag: 0366e39d-a3ca-426f-8ba6-42796c1df224
+
+	measure 'YoY Connector Growth' =
+			
+			VAR LatestYear =
+			    MAX ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] )
+			VAR CurrYear =
+			    CALCULATE (
+			        SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_CONNECTOR_COUNT] ),
+			        'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] = LatestYear
+			    )
+			VAR PrevYear =
+			    CALCULATE (
+			        SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_CONNECTOR_COUNT] ),
+			        'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] = LatestYear - 1
+			    )
+			RETURN
+			    DIVIDE ( CurrYear - PrevYear, PrevYear )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: bb585658-751c-4812-8517-f9b311d9fc6d
+
+	measure 'YoY EV Growth' =
+			
+			VAR LatestYear =
+			    MAX ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] )
+			VAR CurrYear =
+			    CALCULATE (
+			        SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_BEV_PHEV_COUNT] ),
+			        'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] = LatestYear
+			    )
+			VAR PrevYear =
+			    CALCULATE (
+			        SUM ( 'AGG_NATIONAL_SUMMARY__BY_YEAR'[NATIONAL_BEV_PHEV_COUNT] ),
+			        'AGG_NATIONAL_SUMMARY__BY_YEAR'[YEAR_AS_AT] = LatestYear - 1
+			    )
+			RETURN
+			    DIVIDE ( CurrYear - PrevYear, PrevYear )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 4c397674-6636-43e3-bb6f-0f931b133159
+
+	measure 'AFIR Shortfall kW' = MAX ( 0, [AFIR Required kW] - [Total kW] )
+		formatString: #,0
+		lineageTag: 1c18d9b5-695f-4e8d-9f0e-bb5fc9943cbd
+
+	measure 'Avg Distance to Nearest km' =
+			
+			AVERAGE ( 'AGG_HIGHWAY_GAP__CURRENT'[DISTANCE_KM_TO_NEAREST] )
+		formatString: 0.00
+		lineageTag: d54b54c0-d7e8-4335-8eed-fa80f55a3990
+
+	measure 'Total Operators' =
+			
+			DISTINCTCOUNT ( 'AGG_OPERATOR_LANDSCAPE__CURRENT'[OPERATOR_NAME] )
+		formatString: 0
+		lineageTag: 0761e37f-d4c3-442d-90ef-82bda95d7383
+
+	measure 'Leading Operator' =
+			
+			CALCULATE (
+			    SELECTEDVALUE ( 'AGG_OPERATOR_LANDSCAPE__CURRENT'[OPERATOR_NAME] ),
+			    TOPN (
+			        1,
+			        ALL ( 'AGG_OPERATOR_LANDSCAPE__CURRENT'[OPERATOR_NAME] ),
+			        CALCULATE ( SUM ( 'AGG_OPERATOR_LANDSCAPE__CURRENT'[TOTAL_KW] ) ),
+			        DESC
+			    )
+			)
+		lineageTag: 38acee03-615e-4dc7-88a3-a575c98e6d95
+
+	measure 'Leading Operator kW Share' =
+			
+			CALCULATE (
+			    MAXX (
+			        TOPN (
+			            1,
+			            ALL ( 'AGG_OPERATOR_LANDSCAPE__CURRENT'[OPERATOR_NAME] ),
+			            CALCULATE ( SUM ( 'AGG_OPERATOR_LANDSCAPE__CURRENT'[TOTAL_KW] ) ),
+			            DESC
+			        ),
+			        CALCULATE ( SUM ( 'AGG_OPERATOR_LANDSCAPE__CURRENT'[SHARE_OF_NATIONAL_KW] ) )
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9797877a-5164-42f8-9aef-a6e14d9f2686
+
+	measure 'BEV Share' = DIVIDE ( [BEV Count], [BEV + PHEV Count] )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 800c9f15-2bf6-4a15-9f17-81f39356bd4e
+
+	measure 'PHEV Share' = DIVIDE ( [PHEV Count], [BEV + PHEV Count] )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7ef2eb80-e7c5-498a-aaf2-c3d94711ed3f
+
+	measure 'Avg Fleet Age' =
+			
+			VAR CurrentYear = 2024
+			RETURN
+			    CurrentYear -
+			    AVERAGEX (
+			        FILTER (
+			            'FCT_VEHICLE_REGISTRATION',
+			            'FCT_VEHICLE_REGISTRATION'[EV_CATEGORY] IN { "BEV", "PHEV" }
+			            && NOT ( ISBLANK ( 'FCT_VEHICLE_REGISTRATION'[VEHICLE_YEAR] ) )
+			        ),
+			        'FCT_VEHICLE_REGISTRATION'[VEHICLE_YEAR]
+			    )
+		formatString: 0.0
+		lineageTag: 3cafe7df-4e5b-4420-b085-60277770c246
+
+	measure 'Operative Connectors' =
+			
+			CALCULATE (
+			    SUM ( 'FCT_STATION_CONNECTOR'[CONNECTOR_COUNT] ),
+			    'FCT_STATION_CONNECTOR'[IS_OPERATIVE] = TRUE
+			)
+		formatString: #,0
+		lineageTag: 8b8809f4-71bd-416b-bc7d-fab2af32583e
+
+	measure 'DC Fast Connectors' =
+			
+			CALCULATE (
+			    SUM ( 'FCT_STATION_CONNECTOR'[CONNECTOR_COUNT] ),
+			    'FCT_STATION_CONNECTOR'[IS_OPERATIVE] = TRUE,
+			    'FCT_STATION_CONNECTOR'[CURRENT_TYPE] = "DC",
+			    'FCT_STATION_CONNECTOR'[KW] >= 50
+			)
+		formatString: 0
+		lineageTag: 3743aa90-5ef4-4c3a-8c24-2b9c4a636b90
+
+	measure 'Ultrafast Connectors' =
+			
+			CALCULATE (
+			    SUM ( 'FCT_STATION_CONNECTOR'[CONNECTOR_COUNT] ),
+			    'FCT_STATION_CONNECTOR'[IS_OPERATIVE] = TRUE,
+			    'FCT_STATION_CONNECTOR'[CURRENT_TYPE] = "DC",
+			    'FCT_STATION_CONNECTOR'[KW] >= 150
+			)
+		formatString: 0
+		lineageTag: 583f57f5-e036-4a2f-a5be-28ca2a4ac570
+
+	measure 'AC Connectors' =
+			
+			CALCULATE (
+			    SUM ( 'FCT_STATION_CONNECTOR'[CONNECTOR_COUNT] ),
+			    'FCT_STATION_CONNECTOR'[IS_OPERATIVE] = TRUE,
+			    'FCT_STATION_CONNECTOR'[CURRENT_TYPE] = "AC"
+			)
+		formatString: 0
+		lineageTag: 1bf6391e-8579-41bb-aee6-6282b5a3ed16
+
+	measure 'DC Fast Share' = DIVIDE ( [DC Fast Connectors], [Operative Connectors] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2a1711fb-0a42-4a12-bb45-a462b7115bde
+
+	measure 'Ultrafast Share' = DIVIDE ( [Ultrafast Connectors], [Operative Connectors] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 40d46fa5-cfb3-4125-bdbc-670b26fdf464
+
+	measure 'AC Share' = DIVIDE ( [AC Connectors], [Operative Connectors] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 89375dc5-aa8c-4363-b08c-a5b7356e25a8
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: 3601095e-c43b-48e2-ae5e-8974b928cf2c
+		summarizeBy: none
+		sourceColumn: Column1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

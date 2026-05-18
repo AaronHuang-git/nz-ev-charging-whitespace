@@ -1,0 +1,156 @@
+table FCT_VEHICLE_REGISTRATION
+	lineageTag: 5b9629a4-2a28-42c1-b129-e40a8cb04509
+
+	column VEHICLE_ID
+		dataType: double
+		lineageTag: 64b220f4-d26c-4455-9840-4f8b4c0cb8ef
+		summarizeBy: count
+		sourceColumn: VEHICLE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VEHICLE_MODEL_KEY
+		dataType: string
+		lineageTag: c3cfdc7c-a2a9-4b6f-8bc1-7254c762d86b
+		summarizeBy: none
+		sourceColumn: VEHICLE_MODEL_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column TA_KEY
+		dataType: string
+		lineageTag: 77e24a15-7a74-4b44-aeca-a35a8c1b4d47
+		summarizeBy: none
+		sourceColumn: TA_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_REGISTRATION_DATE_KEY
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bb8a5bcc-aade-437e-9947-ea1722ad3fc5
+		summarizeBy: none
+		sourceColumn: FIRST_REGISTRATION_DATE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FIRST_NZ_REGISTRATION_YEAR
+		dataType: double
+		formatString: 0
+		lineageTag: 86b7500b-eddb-41f3-9e9c-0dc01eb53cba
+		summarizeBy: sum
+		sourceColumn: FIRST_NZ_REGISTRATION_YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_NZ_REGISTRATION_MONTH
+		dataType: double
+		formatString: 0
+		lineageTag: 0e347613-2a6f-4826-bb2f-614291dbf919
+		summarizeBy: sum
+		sourceColumn: FIRST_NZ_REGISTRATION_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEHICLE_YEAR
+		dataType: double
+		formatString: 0
+		lineageTag: 5262b1b8-8c1d-470a-90ba-fbec3b4b2458
+		summarizeBy: sum
+		sourceColumn: VEHICLE_YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column EV_CATEGORY
+		dataType: string
+		lineageTag: bca33963-7a43-4330-b440-3c6d814e3891
+		summarizeBy: none
+		sourceColumn: EV_CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CANONICAL_TA_NAME
+		dataType: string
+		lineageTag: 0eebb17d-c9f9-4ea2-bb82-6d95ad13abb9
+		summarizeBy: none
+		sourceColumn: CANONICAL_TA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_NAME
+		dataType: string
+		lineageTag: 42035f6d-8a24-4bce-aa81-64701198042b
+		summarizeBy: none
+		sourceColumn: REGION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISLAND
+		dataType: string
+		lineageTag: 0e9a393a-f921-4b5e-9fde-c6cae1291b40
+		summarizeBy: none
+		sourceColumn: ISLAND
+
+		annotation SummarizationSetBy = Automatic
+
+	column ORIGINAL_COUNTRY
+		dataType: string
+		lineageTag: 31561dbe-1896-4737-ba39-fa6a2060f84b
+		summarizeBy: none
+		sourceColumn: ORIGINAL_COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMPORT_STATUS
+		dataType: string
+		lineageTag: 0ed1af84-6712-4ddd-b084-eedc94ba5541
+		summarizeBy: none
+		sourceColumn: IMPORT_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column NZ_ASSEMBLED
+		dataType: string
+		lineageTag: 6baa2b29-8655-484e-9cab-8332e60a9fdc
+		summarizeBy: none
+		sourceColumn: NZ_ASSEMBLED
+
+		annotation SummarizationSetBy = Automatic
+
+	column POWER_RATING_KW
+		dataType: double
+		lineageTag: a8452c13-91e2-4fe5-a538-c8193eaaae50
+		summarizeBy: sum
+		sourceColumn: POWER_RATING_KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VEHICLE_COUNT
+		dataType: double
+		lineageTag: db9d83e9-c208-4f2c-9bf7-9280f258242d
+		summarizeBy: sum
+		sourceColumn: VEHICLE_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FCT_VEHICLE_REGISTRATION = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    FCT_VEHICLE_REGISTRATION_Table = GOLD_Schema{[Name="FCT_VEHICLE_REGISTRATION",Kind="Table"]}[Data]
+				in
+				    FCT_VEHICLE_REGISTRATION_Table
+
+	annotation PBI_ResultType = Table
+

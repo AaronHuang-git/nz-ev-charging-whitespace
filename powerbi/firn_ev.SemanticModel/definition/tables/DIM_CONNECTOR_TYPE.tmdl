@@ -1,0 +1,76 @@
+table DIM_CONNECTOR_TYPE
+	lineageTag: 88c03233-52b7-4b4d-8ba0-161b402aaedb
+
+	column CONNECTOR_TYPE_KEY
+		dataType: string
+		lineageTag: 498cd548-0680-4f3d-af3e-591bb4f9f6b1
+		summarizeBy: none
+		sourceColumn: CONNECTOR_TYPE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CURRENT_TYPE
+		dataType: string
+		lineageTag: 277cf5ae-64aa-4581-b26b-09d600ae6cc3
+		summarizeBy: none
+		sourceColumn: CURRENT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column KW
+		dataType: double
+		lineageTag: bd982fb5-8174-443b-86c5-198667ebb1bf
+		summarizeBy: none
+		sourceColumn: KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column KW_BAND
+		dataType: string
+		lineageTag: 0d0e0169-ec35-4677-8ba7-debe7699c3b6
+		summarizeBy: none
+		sourceColumn: KW_BAND
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONNECTOR_FORMAT
+		dataType: string
+		lineageTag: d4d04a95-31ef-4b45-83c3-95fa07861367
+		summarizeBy: none
+		sourceColumn: CONNECTOR_FORMAT
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_DC_FAST
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c7eb7579-72ed-4d38-bf33-330326eb20ec
+		summarizeBy: none
+		sourceColumn: IS_DC_FAST
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_ULTRAFAST
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d6185fd3-1256-4fb4-9df6-79975e5eedc7
+		summarizeBy: none
+		sourceColumn: IS_ULTRAFAST
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_CONNECTOR_TYPE = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    DIM_CONNECTOR_TYPE_Table = GOLD_Schema{[Name="DIM_CONNECTOR_TYPE",Kind="Table"]}[Data]
+				in
+				    DIM_CONNECTOR_TYPE_Table
+
+	annotation PBI_ResultType = Table
+

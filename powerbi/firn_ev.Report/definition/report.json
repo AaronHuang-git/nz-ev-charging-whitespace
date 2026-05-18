@@ -1,0 +1,115 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.2.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY26SU04",
+      "reportVersionAtImport": {
+        "visual": "2.8.0",
+        "report": "3.2.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "powerKPI462CE5C2666F4EC8A8BDD7E5587320A3",
+    "multiInfoCards9D184BB3D4E44A139DA08142D76EFD36",
+    "googleMapsPbiVisual2982D2C8868A4D07BE77AE3D0F9F87C3",
+    "inforiverAppPremium2B7A5FD2992D434DAE0B149479307B7B"
+  ],
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY26SU04",
+          "path": "BaseThemes/CY26SU04.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Inspiration_Pack_BG_(19)1280937607296646.png",
+          "path": "Inspiration_Pack_BG_(19)1280937607296646.png",
+          "type": "Image"
+        },
+        {
+          "name": "Inspiration_Pack_BG_(19)7144228842995302.png",
+          "path": "Inspiration_Pack_BG_(19)7144228842995302.png",
+          "type": "Image"
+        },
+        {
+          "name": "Inspiration_Pack_BG_(19)8211726259049222.png",
+          "path": "Inspiration_Pack_BG_(19)8211726259049222.png",
+          "type": "Image"
+        },
+        {
+          "name": "Inspiration_Pack_BG_(19)8821659796455219.png",
+          "path": "Inspiration_Pack_BG_(19)8821659796455219.png",
+          "type": "Image"
+        },
+        {
+          "name": "Inspiration_Pack_BG_(19)9658941088801164.png",
+          "path": "Inspiration_Pack_BG_(19)9658941088801164.png",
+          "type": "Image"
+        },
+        {
+          "name": "Inspiration_Pack_BG_(20)5631018080471791.png",
+          "path": "Inspiration_Pack_BG_(20)5631018080471791.png",
+          "type": "Image"
+        },
+        {
+          "name": "nz_ta_20239127884264100783.json",
+          "path": "nz_ta_20239127884264100783.json",
+          "type": "ShapeMap"
+        },
+        {
+          "name": "Pokecut_177882137346835940940189410286.png",
+          "path": "Pokecut_177882137346835940940189410286.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "e11a37393b8634ca7c87",
+  "position": {
+    "x": 16,
+    "y": 192,
+    "z": 6000,
+    "height": 432,
+    "width": 704,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "map",
+    "query": {
+      "queryState": {
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                    }
+                  },
+                  "Property": "DISTANCE_KM_TO_NEAREST"
+                }
+              },
+              "queryRef": "AGG_HIGHWAY_GAP__CURRENT.DISTANCE_KM_TO_NEAREST",
+              "nativeQueryRef": "DISTANCE_KM_TO_NEAREST"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                        }
+                      },
+                      "Property": "STATION_ID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(AGG_HIGHWAY_GAP__CURRENT.STATION_ID)",
+              "nativeQueryRef": "Count of STATION_ID"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                    }
+                  },
+                  "Property": "LONGITUDE"
+                }
+              },
+              "queryRef": "AGG_HIGHWAY_GAP__CURRENT.LONGITUDE",
+              "nativeQueryRef": "LONGITUDE"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                    }
+                  },
+                  "Property": "LATITUDE"
+                }
+              },
+              "queryRef": "AGG_HIGHWAY_GAP__CURRENT.LATITUDE",
+              "nativeQueryRef": "LATITUDE"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "showTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Charging Station Distribution Map'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "85D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1118fab6f8e900faa3a5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+              }
+            },
+            "Property": "DISTANCE_KM_TO_NEAREST"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "eb678f3c84af4dc07604",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                  }
+                },
+                "Property": "STATION_ID"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a7e41d3582e9ffcf128d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+              }
+            },
+            "Property": "LONGITUDE"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9b401631e2638e09bbb8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+              }
+            },
+            "Property": "LATITUDE"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

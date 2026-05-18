@@ -1,0 +1,69 @@
+relationship 7d955adb-12cc-4278-8094-c71518869b6d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_DATE.DATE_KEY
+	toColumn: LocalDateTable_c0bef894-3f60-40d9-b2ed-61e7ad33dcff.Date
+
+relationship ae242003-fc18-91b4-d337-55c996019d79
+	fromColumn: AGG_SUPPLY_DEMAND__BY_TA_YEAR.TA_KEY
+	toColumn: DIM_GEOGRAPHY.TA_KEY
+
+relationship 1632db6c-6d17-0cd0-24b3-690cdf2f92ce
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: AGG_WHITESPACE_RANKING__CURRENT_YEAR.CANONICAL_TA_NAME
+	toColumn: DIM_GEOGRAPHY.CANONICAL_TA_NAME
+
+relationship b321069a-9c0a-26a3-102a-dd9c32a3c47b
+	fromColumn: AGG_HIGHWAY_GAP__CURRENT.CANONICAL_TA_NAME
+	toColumn: DIM_GEOGRAPHY.CANONICAL_TA_NAME
+
+relationship 4d83381e-1cc5-afb4-1d15-358bae5d041b
+	fromColumn: AGG_HIGHWAY_GAP__CURRENT.OPERATOR_NAME
+	toColumn: DIM_STATION_OPERATOR.OPERATOR_NAME
+
+relationship 990786e2-f16e-dc2e-c7da-3e22f8a599e7
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: AGG_OPERATOR_LANDSCAPE__CURRENT.OPERATOR_KEY
+	toColumn: DIM_STATION_OPERATOR.OPERATOR_KEY
+
+relationship 8abd9a16-e046-1408-f154-e430640345be
+	fromColumn: FCT_VEHICLE_REGISTRATION.TA_KEY
+	toColumn: DIM_GEOGRAPHY.TA_KEY
+
+relationship 3d1a3d5d-df52-48f1-d007-18be636e82cd
+	fromColumn: FCT_VEHICLE_REGISTRATION.VEHICLE_MODEL_KEY
+	toColumn: DIM_VEHICLE_MODEL.VEHICLE_MODEL_KEY
+
+relationship 109937d7-1254-cd45-7e3f-5bbf4696e6c9
+	fromColumn: FCT_VEHICLE_REGISTRATION.FIRST_REGISTRATION_DATE_KEY
+	toColumn: DIM_DATE.DATE_KEY
+
+relationship ac9de0c3-4629-d1d4-4412-1f7cfaf507c5
+	fromColumn: FCT_CHARGING_STATION.TA_KEY
+	toColumn: DIM_GEOGRAPHY.TA_KEY
+
+relationship 947d8d86-f064-1408-ab81-1068394c788b
+	fromColumn: FCT_CHARGING_STATION.OPERATOR_KEY
+	toColumn: DIM_STATION_OPERATOR.OPERATOR_KEY
+
+relationship 0ee804b3-3ee0-f9e0-01e8-8566ca762317
+	fromColumn: FCT_CHARGING_STATION.FIRST_OPERATIONAL_DATE_KEY
+	toColumn: DIM_DATE.DATE_KEY
+
+relationship 8b55868b-63c3-6172-ba25-f54e43440179
+	fromColumn: FCT_STATION_CONNECTOR.CONNECTOR_TYPE_KEY
+	toColumn: DIM_CONNECTOR_TYPE.CONNECTOR_TYPE_KEY
+
+relationship 5ea1c77e-60f2-12e6-59bc-7d1f735177b3
+	fromColumn: FCT_STATION_CONNECTOR.OPERATOR_KEY
+	toColumn: DIM_STATION_OPERATOR.OPERATOR_KEY
+
+relationship 5127bf11-f317-3bca-ab07-bfea3c3c96a9
+	fromColumn: FCT_STATION_CONNECTOR.TA_KEY
+	toColumn: DIM_GEOGRAPHY.TA_KEY
+
+relationship 912a117f-2cb8-e687-01aa-ad4c13c77404
+	fromColumn: FCT_STATION_DISTANCE.TA_KEY
+	toColumn: DIM_GEOGRAPHY.TA_KEY
+

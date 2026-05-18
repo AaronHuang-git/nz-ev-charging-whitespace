@@ -1,0 +1,162 @@
+table AGG_HIGHWAY_GAP__CURRENT
+	lineageTag: 5db68231-947c-487c-bc67-58ee2b6ae58f
+
+	column STATION_ID
+		dataType: string
+		lineageTag: 0233cc0d-b6cc-4bc6-a43d-f7c609f9bb82
+		summarizeBy: none
+		sourceColumn: STATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATION_NAME
+		dataType: string
+		lineageTag: 3b4175d0-1201-4c8a-8d43-6901193922a0
+		summarizeBy: none
+		sourceColumn: STATION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPERATOR_NAME
+		dataType: string
+		lineageTag: 0965d7f5-e91d-48f3-b524-c0b86725b778
+		summarizeBy: none
+		sourceColumn: OPERATOR_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CANONICAL_TA_NAME
+		dataType: string
+		lineageTag: c9e60f88-3d1d-4dae-962a-3ffa9305654d
+		summarizeBy: none
+		sourceColumn: CANONICAL_TA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_NAME
+		dataType: string
+		lineageTag: e7ac95af-9e93-4d98-a30e-b86494286089
+		summarizeBy: none
+		sourceColumn: REGION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISLAND
+		dataType: string
+		lineageTag: 5f1a44d4-317f-4f36-a3de-ce7f2856e8fc
+		summarizeBy: none
+		sourceColumn: ISLAND
+
+		annotation SummarizationSetBy = Automatic
+
+	column LATITUDE
+		dataType: double
+		lineageTag: 5bb1e4ee-56ee-42d6-9c6f-f28661d4dcce
+		summarizeBy: sum
+		sourceColumn: LATITUDE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LONGITUDE
+		dataType: double
+		lineageTag: 9d66834c-06cd-41bf-856d-47f431a54458
+		summarizeBy: sum
+		sourceColumn: LONGITUDE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HAS_DC_FAST
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e9bed7eb-caee-4cde-b6fb-ff2103436fde
+		summarizeBy: none
+		sourceColumn: HAS_DC_FAST
+
+		annotation SummarizationSetBy = Automatic
+
+	column HAS_ULTRAFAST
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6523bcb4-f5f4-41f4-98be-2c6189ace034
+		summarizeBy: none
+		sourceColumn: HAS_ULTRAFAST
+
+		annotation SummarizationSetBy = Automatic
+
+	column NEAREST_STATION_ID
+		dataType: string
+		lineageTag: c2eb71c1-b366-4ac9-bf74-c6cce0ac5d40
+		summarizeBy: none
+		sourceColumn: NEAREST_STATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NEAREST_STATION_NAME
+		dataType: string
+		lineageTag: 597cd038-d0a5-40b9-8af1-0e42d64aacce
+		summarizeBy: none
+		sourceColumn: NEAREST_STATION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column NEAREST_OPERATOR_NAME
+		dataType: string
+		lineageTag: 822aab29-4c21-4130-a0bb-9be31533ac72
+		summarizeBy: none
+		sourceColumn: NEAREST_OPERATOR_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column NEAREST_CANONICAL_TA_NAME
+		dataType: string
+		lineageTag: 859e7f35-86f1-4de8-9fb6-827a83a2fe25
+		summarizeBy: none
+		sourceColumn: NEAREST_CANONICAL_TA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISTANCE_KM_TO_NEAREST
+		dataType: double
+		lineageTag: a20e0532-cc45-449a-bdbe-5329042744d6
+		summarizeBy: sum
+		sourceColumn: DISTANCE_KM_TO_NEAREST
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BREACHES_LEGACY_75KM
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f5a269b5-9d57-48ee-a121-23a0cd0df86a
+		summarizeBy: none
+		sourceColumn: BREACHES_LEGACY_75KM
+
+		annotation SummarizationSetBy = Automatic
+
+	column BREACHES_CURRENT_150KM
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 756dbdd5-6955-4327-9738-5fa4673b8296
+		summarizeBy: none
+		sourceColumn: BREACHES_CURRENT_150KM
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AGG_HIGHWAY_GAP__CURRENT = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    AGG_HIGHWAY_GAP__CURRENT_Table = GOLD_Schema{[Name="AGG_HIGHWAY_GAP__CURRENT",Kind="Table"]}[Data]
+				in
+				    AGG_HIGHWAY_GAP__CURRENT_Table
+
+	annotation PBI_ResultType = Table
+

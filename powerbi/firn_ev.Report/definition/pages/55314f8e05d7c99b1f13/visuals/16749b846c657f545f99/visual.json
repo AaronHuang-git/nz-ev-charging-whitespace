@@ -1,0 +1,691 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "16749b846c657f545f99",
+  "position": {
+    "x": 696,
+    "y": 104,
+    "z": 4000,
+    "height": 440,
+    "width": 568,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                    }
+                  },
+                  "Property": "RANK_BY_AFIR_SHORTFALL"
+                }
+              },
+              "queryRef": "Sum(AGG_WHITESPACE_RANKING__CURRENT_YEAR.RANK_BY_AFIR_SHORTFALL)",
+              "nativeQueryRef": "RANK_BY_AFIR_SHORTFALL",
+              "displayName": "Rank"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                    }
+                  },
+                  "Property": "CANONICAL_TA_NAME"
+                }
+              },
+              "queryRef": "AGG_WHITESPACE_RANKING__CURRENT_YEAR.CANONICAL_TA_NAME",
+              "nativeQueryRef": "TA",
+              "displayName": "TA"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                    }
+                  },
+                  "Property": "REGION_NAME"
+                }
+              },
+              "queryRef": "AGG_WHITESPACE_RANKING__CURRENT_YEAR.REGION_NAME",
+              "nativeQueryRef": "Region",
+              "displayName": "Region"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                        }
+                      },
+                      "Property": "CUM_BEV_PHEV_COUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_WHITESPACE_RANKING__CURRENT_YEAR.CUM_BEV_PHEV_COUNT)",
+              "nativeQueryRef": "EVs",
+              "displayName": "EVs"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                        }
+                      },
+                      "Property": "CUM_CONNECTOR_COUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_WHITESPACE_RANKING__CURRENT_YEAR.CUM_CONNECTOR_COUNT)",
+              "nativeQueryRef": "Connectors",
+              "displayName": "Connectors"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                        }
+                      },
+                      "Property": "AFIR_SHORTFALL_KW"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_WHITESPACE_RANKING__CURRENT_YEAR.AFIR_SHORTFALL_KW)",
+              "nativeQueryRef": "Shortfall kW",
+              "displayName": "Shortfall kW"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                        }
+                      },
+                      "Property": "AFIR_COVERAGE_RATIO"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_WHITESPACE_RANKING__CURRENT_YEAR.AFIR_COVERAGE_RATIO)",
+              "nativeQueryRef": "Coverage",
+              "displayName": "Coverage"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Aggregation": {
+                          "Expression": {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                                }
+                              },
+                              "Property": "AFIR_SHORTFALL_KW"
+                            }
+                          },
+                          "Function": 0
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient2": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'minColor'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#C2200B'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(AGG_WHITESPACE_RANKING__CURRENT_YEAR.AFIR_SHORTFALL_KW)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Aggregation": {
+                                  "Expression": {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                                        }
+                                      },
+                                      "Property": "AFIR_COVERAGE_RATIO"
+                                    }
+                                  },
+                                  "Function": 0
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "10D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#C2200B'"
+                            }
+                          }
+                        },
+                        {
+                          "Condition": {
+                            "And": {
+                              "Left": {
+                                "Comparison": {
+                                  "ComparisonKind": 2,
+                                  "Left": {
+                                    "Aggregation": {
+                                      "Expression": {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                                            }
+                                          },
+                                          "Property": "AFIR_COVERAGE_RATIO"
+                                        }
+                                      },
+                                      "Function": 0
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "10D"
+                                    }
+                                  }
+                                }
+                              },
+                              "Right": {
+                                "Comparison": {
+                                  "ComparisonKind": 3,
+                                  "Left": {
+                                    "Aggregation": {
+                                      "Expression": {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                                            }
+                                          },
+                                          "Property": "AFIR_COVERAGE_RATIO"
+                                        }
+                                      },
+                                      "Function": 0
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "150D"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#DEEFFF'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(AGG_WHITESPACE_RANKING__CURRENT_YEAR.AFIR_COVERAGE_RATIO)"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Sum(AGG_WHITESPACE_RANKING__CURRENT_YEAR.AFIR_COVERAGE_RATIO)"
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87.98000712597624D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "AGG_WHITESPACE_RANKING__CURRENT_YEAR.REGION_NAME"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "63.539693471427604D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(AGG_WHITESPACE_RANKING__CURRENT_YEAR.CUM_BEV_PHEV_COUNT)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "113.02385142882787D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "AGG_WHITESPACE_RANKING__CURRENT_YEAR.CANONICAL_TA_NAME"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top 10 Whitespace TAs'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "85D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "50bc4dcc9585dc832064",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                  }
+                },
+                "Property": "RANK_BY_AFIR_SHORTFALL"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "a",
+              "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 4,
+                  "Left": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "a"
+                            }
+                          },
+                          "Property": "RANK_BY_AFIR_SHORTFALL"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "10L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "04beb0b36aa1e30fbab4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+              }
+            },
+            "Property": "CANONICAL_TA_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fadebd1306ab25b9e0b0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+              }
+            },
+            "Property": "REGION_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f1f7add14aff85b0f263",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                  }
+                },
+                "Property": "CUM_BEV_PHEV_COUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a156c96512a99297bf2a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                  }
+                },
+                "Property": "CUM_CONNECTOR_COUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4545a5887f07201bfdd0",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                  }
+                },
+                "Property": "AFIR_SHORTFALL_KW"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "557349bbfdf970a3f5f8",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+                  }
+                },
+                "Property": "AFIR_COVERAGE_RATIO"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "dab81e976cbb9743ffb5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_WHITESPACE_RANKING__CURRENT_YEAR"
+              }
+            },
+            "Property": "RANK_BY_AFIR_SHORTFALL"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

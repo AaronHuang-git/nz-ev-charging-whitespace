@@ -1,0 +1,40 @@
+table DIM_STATION_OPERATOR
+	lineageTag: 9accc701-a290-4635-8a38-aaed31dedf75
+
+	column OPERATOR_KEY
+		dataType: string
+		lineageTag: 92a6fd87-5791-45d7-b988-11ba5299593d
+		summarizeBy: none
+		sourceColumn: OPERATOR_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPERATOR_NAME
+		dataType: string
+		lineageTag: 956a2722-1fc0-4a6a-a49e-7336b0d3eb02
+		summarizeBy: none
+		sourceColumn: OPERATOR_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPERATOR_NAME_CLEAN
+		dataType: string
+		lineageTag: f6250136-ba0c-4d79-a47d-901f95e93b45
+		summarizeBy: none
+		sourceColumn: OPERATOR_NAME_CLEAN
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_STATION_OPERATOR = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    DIM_STATION_OPERATOR_Table = GOLD_Schema{[Name="DIM_STATION_OPERATOR",Kind="Table"]}[Data]
+				in
+				    DIM_STATION_OPERATOR_Table
+
+	annotation PBI_ResultType = Table
+

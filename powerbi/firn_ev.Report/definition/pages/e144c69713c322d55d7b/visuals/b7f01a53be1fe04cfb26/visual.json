@@ -1,0 +1,324 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "b7f01a53be1fe04cfb26",
+  "position": {
+    "x": 728,
+    "y": 192,
+    "z": 7000,
+    "height": 432,
+    "width": 528,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                    }
+                  },
+                  "Property": "STATION_NAME"
+                }
+              },
+              "queryRef": "AGG_HIGHWAY_GAP__CURRENT.STATION_NAME",
+              "nativeQueryRef": "Station",
+              "displayName": "Station"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                    }
+                  },
+                  "Property": "CANONICAL_TA_NAME"
+                }
+              },
+              "queryRef": "AGG_HIGHWAY_GAP__CURRENT.CANONICAL_TA_NAME",
+              "nativeQueryRef": "TA",
+              "displayName": "TA"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                    }
+                  },
+                  "Property": "NEAREST_STATION_NAME"
+                }
+              },
+              "queryRef": "AGG_HIGHWAY_GAP__CURRENT.NEAREST_STATION_NAME",
+              "nativeQueryRef": "Nearest Station",
+              "displayName": "Nearest Station"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                        }
+                      },
+                      "Property": "DISTANCE_KM_TO_NEAREST"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AGG_HIGHWAY_GAP__CURRENT.DISTANCE_KM_TO_NEAREST)",
+              "nativeQueryRef": "km to nearest",
+              "displayName": "km to nearest"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                      }
+                    },
+                    "Property": "DISTANCE_KM_TO_NEAREST"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "107.07708225417D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "AGG_HIGHWAY_GAP__CURRENT.NEAREST_STATION_NAME"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118.85625642015246D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "AGG_HIGHWAY_GAP__CURRENT.STATION_NAME"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Most Isolated Stations'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "85D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1690b68c2b742ff2329d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+              }
+            },
+            "Property": "STATION_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "62207294347e10325738",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+              }
+            },
+            "Property": "CANONICAL_TA_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a4c8b211ef5a74e42e69",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+              }
+            },
+            "Property": "NEAREST_STATION_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e81f5bb28ebcd969433c",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AGG_HIGHWAY_GAP__CURRENT"
+                  }
+                },
+                "Property": "DISTANCE_KM_TO_NEAREST"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

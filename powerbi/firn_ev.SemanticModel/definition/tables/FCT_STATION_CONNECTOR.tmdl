@@ -1,0 +1,111 @@
+table FCT_STATION_CONNECTOR
+	lineageTag: 67a2b7a6-1725-419e-88ad-35af662727a6
+
+	column STATION_ID
+		dataType: string
+		lineageTag: 1e4ea4b2-5342-40a9-a0bd-bbba99e6efcb
+		summarizeBy: none
+		sourceColumn: STATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONNECTOR_TYPE_KEY
+		dataType: string
+		lineageTag: 4f59a57e-152d-4b7b-8b8a-b9dbc7843b5c
+		summarizeBy: none
+		sourceColumn: CONNECTOR_TYPE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPERATOR_KEY
+		dataType: string
+		lineageTag: 75b0afbb-0303-4fdc-93f0-e5239c7badf3
+		summarizeBy: none
+		sourceColumn: OPERATOR_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column TA_KEY
+		dataType: string
+		lineageTag: bdc2df65-5d7d-4941-b4b3-ec9ca80a9a54
+		summarizeBy: none
+		sourceColumn: TA_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONNECTOR_SEQ
+		dataType: double
+		lineageTag: f51dcfb4-4622-4a4c-a306-15e1b2c5c804
+		summarizeBy: sum
+		sourceColumn: CONNECTOR_SEQ
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CURRENT_TYPE
+		dataType: string
+		lineageTag: 1a73dd24-e9d1-44e3-b61d-6e77ec8cfa36
+		summarizeBy: none
+		sourceColumn: CURRENT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column KW
+		dataType: double
+		lineageTag: f047c147-2f19-42b4-af56-541056da58c7
+		summarizeBy: sum
+		sourceColumn: KW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONNECTOR_FORMAT
+		dataType: string
+		lineageTag: 3c3e9037-fd00-4a9e-be4c-cd49df04e871
+		summarizeBy: none
+		sourceColumn: CONNECTOR_FORMAT
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATUS
+		dataType: string
+		lineageTag: 3e81ed33-026a-4ead-88ba-a34865190ea5
+		summarizeBy: none
+		sourceColumn: STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_OPERATIVE
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 114565bb-5a46-42d2-a4c9-fd1a6fc56f64
+		summarizeBy: none
+		sourceColumn: IS_OPERATIVE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONNECTOR_COUNT
+		dataType: double
+		lineageTag: 62cbeeb6-4d8e-4056-9013-92cfb10ea7c1
+		summarizeBy: sum
+		sourceColumn: CONNECTOR_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FCT_STATION_CONNECTOR = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    FCT_STATION_CONNECTOR_Table = GOLD_Schema{[Name="FCT_STATION_CONNECTOR",Kind="Table"]}[Data]
+				in
+				    FCT_STATION_CONNECTOR_Table
+
+	annotation PBI_ResultType = Table
+

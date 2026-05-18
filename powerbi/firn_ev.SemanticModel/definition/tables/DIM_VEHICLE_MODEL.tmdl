@@ -1,0 +1,72 @@
+table DIM_VEHICLE_MODEL
+	lineageTag: 0cea1838-e04a-4da2-8763-7f1d9e2cb9c5
+
+	column VEHICLE_MODEL_KEY
+		dataType: string
+		lineageTag: b4ee6f3f-32d7-484e-b68d-831159b69ffb
+		summarizeBy: none
+		sourceColumn: VEHICLE_MODEL_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAKE
+		dataType: string
+		lineageTag: a15077af-2f18-4f76-af58-dfb8f7e2e9a5
+		summarizeBy: none
+		sourceColumn: MAKE
+
+		annotation SummarizationSetBy = Automatic
+
+	column MODEL
+		dataType: string
+		lineageTag: 8262141d-c7e4-4e4b-8936-f6587cfd12cc
+		summarizeBy: none
+		sourceColumn: MODEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBMODEL
+		dataType: string
+		lineageTag: 0ef0b036-e511-4ff4-bd59-2863ba3836f7
+		summarizeBy: none
+		sourceColumn: SUBMODEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column BODY_TYPE
+		dataType: string
+		lineageTag: d057cc49-9f70-4c7c-a2c8-fa6dcda16236
+		summarizeBy: none
+		sourceColumn: BODY_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column MOTIVE_POWER
+		dataType: string
+		lineageTag: 32f6e795-9666-420a-afa9-f8e7b89a77cb
+		summarizeBy: none
+		sourceColumn: MOTIVE_POWER
+
+		annotation SummarizationSetBy = Automatic
+
+	column EV_CATEGORY
+		dataType: string
+		lineageTag: 69e3187a-699d-4c38-bb1a-55277e86cfd0
+		summarizeBy: none
+		sourceColumn: EV_CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_VEHICLE_MODEL = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    DIM_VEHICLE_MODEL_Table = GOLD_Schema{[Name="DIM_VEHICLE_MODEL",Kind="Table"]}[Data]
+				in
+				    DIM_VEHICLE_MODEL_Table
+
+	annotation PBI_ResultType = Table
+

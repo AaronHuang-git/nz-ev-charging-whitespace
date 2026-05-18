@@ -1,0 +1,94 @@
+table DIM_GEOGRAPHY
+	lineageTag: 5055a83f-a84a-4618-bf69-2bd54930f635
+
+	column TA_KEY
+		dataType: string
+		lineageTag: 132b540f-4d3f-45c0-be6d-945f1a1689ec
+		summarizeBy: none
+		sourceColumn: TA_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CANONICAL_TA_NAME
+		dataType: string
+		lineageTag: c40d6d95-19ef-4a5a-a5a9-bf0a8932e7ed
+		summarizeBy: none
+		sourceColumn: CANONICAL_TA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column MVR_TLA
+		dataType: string
+		lineageTag: b67719eb-c086-4c39-93d7-b9b57a034d69
+		summarizeBy: none
+		sourceColumn: MVR_TLA
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATSNZ_TA_NAME
+		dataType: string
+		lineageTag: b189d2a0-c4ce-4846-b7d6-2d1a08447129
+		summarizeBy: none
+		sourceColumn: STATSNZ_TA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column LINZ_TA_NAME
+		dataType: string
+		lineageTag: 6c0e701f-0218-4ab0-a88b-199bc16c6161
+		summarizeBy: none
+		sourceColumn: LINZ_TA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column TA_CODE
+		dataType: string
+		lineageTag: fb8cab94-437f-425b-99ba-4c212e90a20a
+		summarizeBy: none
+		sourceColumn: TA_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_NAME
+		dataType: string
+		lineageTag: 30d76e63-4216-4a28-9851-96a921f70e8a
+		summarizeBy: none
+		sourceColumn: REGION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISLAND
+		dataType: string
+		lineageTag: b50089db-b52e-4a45-b24f-a3d0045eca35
+		summarizeBy: none
+		sourceColumn: ISLAND
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAND_AREA_SQ_KM
+		dataType: double
+		lineageTag: 26116f56-5ee6-4b83-a72f-25b30c44b8f8
+		summarizeBy: sum
+		sourceColumn: LAND_AREA_SQ_KM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DIM_GEOGRAPHY = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com", "FIRN_EV_XS_WH"),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    QueryResult = Value.NativeQuery(
+				        FIRN_EV_DEV_Database,
+				        "SELECT ta_key, canonical_ta_name, mvr_tla, statsnz_ta_name, linz_ta_name, ta_code, region_name, island, land_area_sq_km FROM GOLD.DIM_GEOGRAPHY"
+				    )
+				in
+				    QueryResult
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

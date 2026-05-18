@@ -1,0 +1,146 @@
+table DIM_DATE
+	lineageTag: 7169604a-9ca2-451a-8db4-f33204576c48
+
+	column DATE_KEY
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 37ed0bab-8548-4616-9ae1-5865101727c3
+		summarizeBy: none
+		sourceColumn: DATE_KEY
+
+		variation Variation
+			isDefault
+			relationship: 7d955adb-12cc-4278-8094-c71518869b6d
+			defaultHierarchy: LocalDateTable_c0bef894-3f60-40d9-b2ed-61e7ad33dcff.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DATE_KEY_INT
+		dataType: double
+		formatString: 0
+		lineageTag: 4f3f4538-5cd0-4ae7-9ff0-90faf250d0e2
+		summarizeBy: sum
+		sourceColumn: DATE_KEY_INT
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR
+		dataType: double
+		formatString: 0
+		lineageTag: 90eb8135-5f42-4711-9f7f-d3937dbf4448
+		summarizeBy: sum
+		sourceColumn: YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column QUARTER
+		dataType: double
+		formatString: 0
+		lineageTag: 26ab5e4f-c631-4bfd-a8bc-789be6fef11a
+		summarizeBy: sum
+		sourceColumn: QUARTER
+
+		annotation SummarizationSetBy = Automatic
+
+	column MONTH
+		dataType: double
+		formatString: 0
+		lineageTag: 0da207de-eaa9-4a59-afa2-5c17c6760a6d
+		summarizeBy: sum
+		sourceColumn: MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column MONTH_NAME
+		dataType: string
+		lineageTag: efe91e9b-e40f-413f-a1ac-266c34054979
+		summarizeBy: none
+		sourceColumn: MONTH_NAME
+		sortByColumn: MONTH
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column MONTH_NAME_SHORT
+		dataType: string
+		lineageTag: e811c0cc-f675-4575-a2c8-ac8d7ed982fc
+		summarizeBy: none
+		sourceColumn: MONTH_NAME_SHORT
+		sortByColumn: MONTH
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAY_OF_MONTH
+		dataType: double
+		formatString: 0
+		lineageTag: 1ce4e8bc-12f9-410c-9c1a-66216725c86b
+		summarizeBy: sum
+		sourceColumn: DAY_OF_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAY_OF_WEEK
+		dataType: double
+		formatString: 0
+		lineageTag: 6580b415-7a9f-446c-b5e2-efef1ba957f0
+		summarizeBy: sum
+		sourceColumn: DAY_OF_WEEK
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAY_NAME
+		dataType: string
+		lineageTag: 444beb38-7956-4618-9c0e-7b6293f9f47a
+		summarizeBy: none
+		sourceColumn: DAY_NAME
+		sortByColumn: DAY_OF_WEEK_ISO
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAY_OF_WEEK_ISO
+		dataType: double
+		formatString: 0
+		lineageTag: b616dc93-7726-41d0-96b0-e59f99c74715
+		summarizeBy: sum
+		sourceColumn: DAY_OF_WEEK_ISO
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_WEEKEND
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f50dfb6a-c795-43ed-b970-f200e41026ae
+		summarizeBy: none
+		sourceColumn: IS_WEEKEND
+
+		annotation SummarizationSetBy = Automatic
+
+	column NZ_FISCAL_YEAR_ENDING
+		dataType: double
+		formatString: 0
+		lineageTag: 984de3ca-1ddf-4fe2-88b5-679720f2bf07
+		summarizeBy: sum
+		sourceColumn: NZ_FISCAL_YEAR_ENDING
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_DATE = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    DIM_DATE_Table = GOLD_Schema{[Name="DIM_DATE",Kind="Table"]}[Data]
+				in
+				    DIM_DATE_Table
+
+	annotation PBI_ResultType = Table
+

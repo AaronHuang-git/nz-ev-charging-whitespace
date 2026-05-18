@@ -1,0 +1,104 @@
+table AGG_OPERATOR_LANDSCAPE__CURRENT
+	lineageTag: f99ea0e2-fa86-4267-bce3-f2b1e5fa9ce8
+
+	column OPERATOR_KEY
+		dataType: string
+		lineageTag: db425cc3-8c54-4dbc-816f-e2374357a28e
+		summarizeBy: none
+		sourceColumn: OPERATOR_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPERATOR_NAME
+		dataType: string
+		lineageTag: 1ab5f5ce-d286-437e-8c44-82b090d85b5d
+		summarizeBy: none
+		sourceColumn: OPERATOR_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATION_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: de9574c9-b2d5-40bd-bc8f-8d0739857b73
+		summarizeBy: sum
+		sourceColumn: STATION_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONNECTOR_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: 8c6cd7d3-2610-45a9-a335-d785fd963926
+		summarizeBy: sum
+		sourceColumn: CONNECTOR_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTAL_KW
+		dataType: double
+		formatString: 0
+		lineageTag: d77ac8ea-5cc3-4222-8fde-8d8b8e9fc7e2
+		summarizeBy: sum
+		sourceColumn: TOTAL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+	column DC_FAST_STATION_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: c03c1ceb-6a68-41d5-93ec-c1258cab853b
+		summarizeBy: sum
+		sourceColumn: DC_FAST_STATION_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column ULTRAFAST_STATION_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: bea6bc05-35ea-408b-8f37-df2755ee86e2
+		summarizeBy: sum
+		sourceColumn: ULTRAFAST_STATION_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column TAS_COVERED
+		dataType: double
+		formatString: 0
+		lineageTag: ee329209-3ed2-4f6f-8b18-8ea946076e75
+		summarizeBy: sum
+		sourceColumn: TAS_COVERED
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHARE_OF_NATIONAL_KW
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 64b9d68c-7e96-4a10-a478-8da51fa9909d
+		summarizeBy: sum
+		sourceColumn: SHARE_OF_NATIONAL_KW
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHARE_OF_NATIONAL_CONNECTORS
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f0eac6f9-7802-4305-9494-37b60e83214b
+		summarizeBy: sum
+		sourceColumn: SHARE_OF_NATIONAL_CONNECTORS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AGG_OPERATOR_LANDSCAPE__CURRENT = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("<your-snowflake-account>.snowflakecomputing.com","FIRN_EV_XS_WH",[Implementation="2.0"]),
+				    FIRN_EV_DEV_Database = Source{[Name="FIRN_EV_DEV",Kind="Database"]}[Data],
+				    GOLD_Schema = FIRN_EV_DEV_Database{[Name="GOLD",Kind="Schema"]}[Data],
+				    AGG_OPERATOR_LANDSCAPE__CURRENT_Table = GOLD_Schema{[Name="AGG_OPERATOR_LANDSCAPE__CURRENT",Kind="Table"]}[Data]
+				in
+				    AGG_OPERATOR_LANDSCAPE__CURRENT_Table
+
+	annotation PBI_ResultType = Table
+
