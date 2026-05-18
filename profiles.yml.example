@@ -1,0 +1,24 @@
+# profiles.yml.example
+# Copy this file to ~/.dbt/profiles.yml and fill in values via the .env file
+# at the repo root. profiles.yml lives OUTSIDE this repo and must never be
+# committed.
+#
+# Uses key-pair (RSA) authentication. Snowflake password auth is not used.
+# Bootstrap your RSA key against your Snowflake user with:
+#   ALTER USER <your_user> SET RSA_PUBLIC_KEY='<paste base64, no PEM headers>';
+
+firn_ev:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account:          "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user:             "{{ env_var('SNOWFLAKE_USER') }}"
+      role:             "{{ env_var('SNOWFLAKE_ROLE',      'FIRN_EV_DEV_OWNER') }}"
+      warehouse:        "{{ env_var('SNOWFLAKE_WAREHOUSE', 'FIRN_EV_XS_WH') }}"
+      database:         "{{ env_var('SNOWFLAKE_DATABASE',  'FIRN_EV_DEV') }}"
+      schema:           BRONZE
+      private_key_path: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_PATH') }}"
+      threads:          4
+      query_tag:        dbt-firn-ev
+      client_session_keep_alive: False
