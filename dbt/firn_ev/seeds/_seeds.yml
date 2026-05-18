@@ -1,0 +1,77 @@
+version: 2
+
+seeds:
+  - name: seed_ta_name_map
+    description: "Reconciliation of NZ Territorial Authority names across MVR, Stats NZ, and LINZ. One row per canonical TA (67 total). Maintained by scripts/build_ta_name_seed.py — regenerate when source TA spellings change."
+    config:
+      column_types:
+        mvr_tla:           varchar
+        statsnz_ta_name:   varchar
+        linz_ta_name:      varchar
+        linz_ta_code:      varchar
+        canonical_ta_name: varchar
+        region_name:       varchar
+        island:            varchar
+    columns:
+      - name: canonical_ta_name
+        description: "The single form used downstream (Silver and Gold). Title case with macrons where Stats NZ uses them."
+        data_tests:
+          - not_null
+          - unique
+      - name: mvr_tla
+        description: "Exact uppercase form as it appears in MVR's TLA column."
+        data_tests:
+          - not_null
+          - unique
+      - name: statsnz_ta_name
+        description: "Exact form as it appears in Stats NZ's Table 2."
+        data_tests:
+          - not_null
+          - unique
+      - name: linz_ta_name
+        description: "Exact form as it appears in LINZ TA 2023 boundaries layer."
+        data_tests:
+          - not_null
+          - unique
+      - name: linz_ta_code
+        description: "LINZ TA code (e.g. 001..076). Excludes 999 (Area Outside TA)."
+        data_tests:
+          - not_null
+          - unique
+      - name: region_name
+        description: "Regional council the TA belongs to."
+        data_tests:
+          - not_null
+          - accepted_values:
+              # Note: "Hawke''s Bay" uses doubled apostrophe — Snowflake's escape syntax
+              # for a single quote inside a string literal. dbt's accepted_values test
+              # injects values into SQL without escaping, so we encode the escape here.
+              values: ['Northland', 'Auckland', 'Waikato', 'Bay of Plenty', 'Gisborne',
+                       "Hawke''s Bay", 'Taranaki', 'Manawatū-Whanganui', 'Wellington',
+                       'Tasman', 'Nelson', 'Marlborough', 'West Coast', 'Canterbury',
+                       'Otago', 'Southland', 'Chatham Islands']
+      - name: island
+        description: "North Island, South Island, or Chatham Islands (own grouping)."
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['North Island', 'South Island', 'Chatham Islands']
+
+  - name: seed_evroam_overrides
+    description: "Manual corrections for known-bad rows in RAW.EVROAM_STATIONS. Applied in Silver. Add a row when you discover a source data issue, with a reason note for audit trail."
+    config:
+      column_types:
+        station_id:           varchar
+        latitude_corrected:   number(10,6)
+        longitude_corrected:  number(10,6)
+        reason:               varchar
+    columns:
+      - name: station_id
+        description: "EV Roam OBJECTID matching brz_evroam__stations.station_id."
+        data_tests:
+          - not_null
+          - unique
+      - name: reason
+        description: "Plain-English audit note — why this correction exists."
+        data_tests:
+          - not_null

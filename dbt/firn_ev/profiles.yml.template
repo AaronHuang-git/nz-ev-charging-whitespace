@@ -1,0 +1,17 @@
+# COPY this file to ~/.dbt/profiles.yml and fill in <placeholders>.
+# DO NOT commit your filled copy — profiles.yml is gitignored at the repo root.
+
+firn_ev:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account:   <YOUR_ACCOUNT_LOCATOR>      # e.g. abc12345.ap-southeast-2
+      user:      <YOUR_SNOWFLAKE_USERNAME>
+      password:  "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role:      FIRN_EV_DEV_OWNER
+      database:  FIRN_EV_DEV
+      warehouse: FIRN_EV_XS_WH
+      schema:    BRONZE                       # default; overridden per layer in dbt_project.yml
+      threads:   4
+      client_session_keep_alive: false

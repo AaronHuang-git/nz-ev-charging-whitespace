@@ -1,0 +1,64 @@
+version: 2
+
+sources:
+  - name: raw
+    database: FIRN_EV_DEV
+    schema:   RAW
+    description: "Landed copies of source files. VARCHAR/VARIANT only."
+    loaded_at_field: _LOADED_AT
+
+    tables:
+      - name: mvr_vehicles
+        identifier: MVR_VEHICLES
+        description: "Motor Vehicle Register snapshot from data.govt.nz."
+        columns:
+          - name: OBJECTID
+            description: "MVR record identifier."
+            data_tests:
+              - not_null
+              - unique
+          - name: MOTIVE_POWER
+            description: "Powertrain type (PETROL, DIESEL, ELECTRIC, hybrids, etc.)."
+          - name: TLA
+            description: "Territorial Local Authority — NZ TA name (free-form, dirty; normalise via seed)."
+          - name: FIRST_NZ_REGISTRATION_YEAR
+            description: "Year of first NZ registration. Drives our trend reconstruction."
+          - name: FIRST_NZ_REGISTRATION_MONTH
+            description: "Month of first NZ registration."
+
+      - name: evroam_stations
+        identifier: EVROAM_STATIONS
+        description: "EV Roam Charging Stations from data.govt.nz. Full JSON object per row."
+        columns:
+          - name: RAW_RECORD
+            description: "Full JSON object per station record."
+            data_tests:
+              - not_null
+
+      - name: statsnz_pop_ta
+        identifier: STATSNZ_POP_TA
+        description: "Stats NZ subnational population by TA × year (loaded via Python helper from XLSX)."
+        columns:
+          - name: TA_NAME
+            description: "TA name as it appears in the Stats NZ workbook (mixed case)."
+          - name: YEAR_AS_AT
+            description: "Year as at 30 June (e.g. '2018', '2023', '2024')."
+          - name: POPULATION
+            description: "Estimated resident population (string in raw, cast in BRONZE)."
+
+      - name: linz_ta_boundaries
+        identifier: LINZ_TA_BOUNDARIES
+        description: "LINZ TA 2023 boundaries (clipped, generalised). Loaded via Python helper."
+        columns:
+          - name: TA_CODE
+            description: "TA code per LINZ schema."
+            data_tests:
+              - not_null
+          - name: TA_NAME
+            description: "TA name per LINZ schema."
+            data_tests:
+              - not_null
+          - name: GEOMETRY_GEOJSON
+            description: "GeoJSON geometry (Polygon or MultiPolygon). Cast to GEOGRAPHY in BRONZE."
+            data_tests:
+              - not_null

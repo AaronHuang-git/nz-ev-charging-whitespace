@@ -1,0 +1,3 @@
+station_id,latitude_corrected,longitude_corrected,reason
+160478,-38.626030,176.088402,"Source has lon=76 (typo, missing leading 1); confirmed via address text 'Wairakei, Waikato 3384'."
+160142,-46.411600,168.360300,"Source has Auckland coords; address is '36 Surrey Park Road, 9810 Invercargill' (Stadium Southland venue). Approximate Surrey Park centroid in Invercargill City."

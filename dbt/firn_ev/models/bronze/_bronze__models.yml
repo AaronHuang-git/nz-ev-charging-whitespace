@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: brz_mvr__vehicles
+    description: "Bronze view over RAW.MVR_VEHICLES. 1:1 with source, type-cast and renamed. One row per currently-registered NZ vehicle."
+    columns:
+      - name: vehicle_id
+        description: "Surrogate ID (OBJECTID from MVR). Grain key."
+        data_tests:
+          - not_null
+          - unique
+      - name: motive_power
+        description: "Uppercased MOTIVE_POWER. Classified to ev_category in Silver via classify_ev_category macro."
+      - name: tla_raw
+        description: "Uppercased Territorial Local Authority name from MVR. Dirty - normalise via seed in Silver."
+      - name: first_nz_registration_date
+        description: "Constructed YYYY-MM-01 from FIRST_NZ_REGISTRATION_YEAR + MONTH. Used to reconstruct fleet trend."
+
+  - name: brz_evroam__stations
+    description: "Bronze view over RAW.EVROAM_STATIONS. Parses the VARIANT JSON into typed columns. One row per charging station site (not connector)."
+    columns:
+      - name: station_id
+        description: "Station OBJECTID. Grain key."
+        data_tests:
+          - not_null
+          - unique
+      - name: latitude
+        description: "Decimal degrees, WGS 84. Should fall in NZ bounding box."
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: "{{ var('nz_lat_min') }}"
+              max_value: "{{ var('nz_lat_max') }}"
+              config:
+                severity: warn   # Defensive symmetry with longitude — see note below.
+      - name: longitude
+        description: "Decimal degrees, WGS 84. Should fall in NZ bounding box."
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: "{{ var('nz_lon_min') }}"
+              max_value: "{{ var('nz_lon_max') }}"
+              config:
+                severity: warn
+                # Known bad row: station 160478 'bp charge Wairakei' has lon=76 (should be 176).
+                # Bronze stays 1:1 with source. Corrected in Silver via seed_evroam_overrides.csv.
+      - name: current_type
+        description: "AC, DC, or MIXED (stations with both AC and DC connectors). Uppercased."
+        data_tests:
+          - accepted_values:
+              values: ['AC', 'DC', 'MIXED']
+      - name: connectors_list_raw
+        description: "Raw connector string e.g. '{DC, 50 kW, CHAdeMO, Status: Operative, Count:1}'. Parsed in Silver."
+
+  - name: brz_statsnz__population_ta
+    description: "Bronze view over RAW.STATSNZ_POP_TA. One row per (TA, year). Years are 2018, 2023, 2024."
+    columns:
+      - name: ta_name_raw
+        description: "TA name as Stats NZ writes it (mixed case, includes macrons). Normalise via seed in Silver."
+        data_tests:
+          - not_null
+      - name: year_as_at
+        description: "Year as at 30 June."
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [2018, 2023, 2024]
+      - name: population
+        description: "Estimated resident population. Always >= 0."
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 2500000
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [ta_name_raw, year_as_at]
+
+  - name: brz_linz__ta_boundaries
+    description: "Bronze view over RAW.LINZ_TA_BOUNDARIES. One row per TA polygon. Geometry cast to Snowflake GEOGRAPHY."
+    columns:
+      - name: ta_code
+        description: "LINZ TA code (e.g. '001', '076', '999'). Grain key."
+        data_tests:
+          - not_null
+          - unique
+      - name: ta_name_raw
+        description: "TA name as LINZ writes it (e.g. 'Whangarei District' - no macron in this dataset)."
+        data_tests:
+          - not_null
+      - name: geometry
+        description: "Snowflake GEOGRAPHY (MultiPolygon, WGS 84). Used for ST_CONTAINS in Silver."
+        data_tests:
+          - not_null
+      - name: land_area_sq_km
+        description: "Land area (sq km), excludes water."
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 50000
