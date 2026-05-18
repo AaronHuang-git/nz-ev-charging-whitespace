@@ -1,0 +1,98 @@
+version: 2
+
+models:
+  - name: fct_vehicle_registration
+    description: "One row per registered NZ vehicle. Drops 2 MVR oddity rows (OTHER, 8-GEAR AUTO) and any with NULL make/model. ~196,726 rows. Grain = vehicle_id."
+    columns:
+      - name: vehicle_id
+        data_tests:
+          - not_null
+          - unique
+      - name: vehicle_model_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_vehicle_model')
+              field: vehicle_model_key
+      - name: ta_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: ta_key
+      - name: ev_category
+        data_tests:
+          - accepted_values:
+              values: ['BEV', 'PHEV', 'HEV', 'FCEV', 'ICE']
+      - name: vehicle_count
+        data_tests:
+          - not_null
+
+  - name: fct_charging_station
+    description: "One row per public charging station from EV Roam (407 rows). Carries capacity rollup, TA assignment, and operator FK."
+    columns:
+      - name: station_id
+        data_tests:
+          - not_null
+          - unique
+      - name: ta_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: ta_key
+      - name: operator_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_station_operator')
+              field: operator_key
+      - name: total_operative_kw
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 5000
+
+  - name: fct_station_connector
+    description: "One row per connector type at a station (~819 rows). Provides connector-format granularity for AFIR connector-count analysis."
+    columns:
+      - name: station_id
+        data_tests:
+          - not_null
+      - name: connector_type_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_connector_type')
+              field: connector_type_key
+      - name: ta_key
+        data_tests:
+          - relationships:
+              to: ref('dim_geography')
+              field: ta_key
+      - name: is_operative
+        data_tests:
+          - not_null
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [station_id, connector_seq]
+
+  - name: fct_station_distance
+    description: "Pairwise nearest-5 distances between stations (2,035 rows). Both endpoints carry operator + TA keys for dashboard filtering on either side."
+    columns:
+      - name: station_id
+        data_tests:
+          - not_null
+      - name: nearest_station_id
+        data_tests:
+          - not_null
+      - name: distance_km
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 2500
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [station_id, rank_nearest]

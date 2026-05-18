@@ -1,0 +1,91 @@
+version: 2
+
+models:
+  - name: agg_supply_demand__by_ta_year
+    description: "Flagship dashboard aggregate. Grain = TA x year (67 x 7 = 469 rows). Cumulative vehicle and station counts at each year-end, AFIR (kW-based) and NZ Strategy (count-based) supply/demand measures, plus per-capita context. Population forward-filled from nearest Stats NZ year (2018, 2023, 2024)."
+    columns:
+      - name: ta_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: ta_key
+      - name: year_as_at
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [2018, 2019, 2020, 2021, 2022, 2023, 2024]
+      - name: cum_bev_count
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+      - name: cum_total_kw
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+      - name: afir_required_kw
+        description: "AFIR threshold = 1.3 kW per BEV + 0.8 kW per PHEV. Per the EU AFIR (Regulation 2023/1804) per-vehicle weights."
+        data_tests:
+          - not_null
+      - name: afir_coverage_ratio
+        description: "afir_actual_kw / afir_required_kw. >1.0 = over-supplied. NULL when EV demand is zero."
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [ta_key, year_as_at]
+
+  - name: agg_national_summary__by_year
+    description: "National rollup of agg_supply_demand__by_ta_year. Grain = year (7 rows). Drives executive-summary KPI cards in Power BI."
+    columns:
+      - name: year_as_at
+        data_tests:
+          - not_null
+          - unique
+          - accepted_values:
+              values: [2018, 2019, 2020, 2021, 2022, 2023, 2024]
+      - name: national_afir_coverage_ratio
+        description: "national_afir_actual_kw / national_afir_required_kw. Tracks national supply-vs-demand over time."
+
+  - name: agg_whitespace_ranking__current_year
+    description: "Operator-pitch table: TAs ranked by AFIR shortfall (descending) for the latest year. Filtered to population >= 5,000 to exclude micro-TAs that distort top-N lists."
+    columns:
+      - name: canonical_ta_name
+        data_tests:
+          - not_null
+          - unique
+      - name: rank_by_afir_shortfall
+        data_tests:
+          - not_null
+
+  - name: agg_highway_gap__current
+    description: "NZ Strategy distance test. Grain = station (407 rows or fewer). Flags stations whose nearest neighbour exceeds the 75km (legacy) and 150km (current hub) targets."
+    columns:
+      - name: station_id
+        data_tests:
+          - not_null
+          - unique
+      - name: distance_km_to_nearest
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 2500
+      - name: breaches_legacy_75km
+        data_tests:
+          - not_null
+
+  - name: agg_operator_landscape__current
+    description: "Per-operator rollup of stations / connectors / kW + share-of-national. Grain = operator (9 rows). Drives operator-landscape dashboard page."
+    columns:
+      - name: operator_key
+        data_tests:
+          - not_null
+          - unique
+      - name: operator_name
+        data_tests:
+          - not_null
+          - unique
+      - name: total_kw
+        data_tests:
+          - not_null

@@ -1,0 +1,97 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: "Calendar utility dimension. One row per day, 2013-01-01 to 2030-12-31. Generated via dbt_date.get_date_dimension."
+    columns:
+      - name: date_key
+        description: "Date as DATE. Primary key of the dimension."
+        data_tests:
+          - not_null
+          - unique
+      - name: date_key_int
+        description: "YYYYMMDD integer form for compact joins from Power BI."
+        data_tests:
+          - not_null
+          - unique
+      - name: year
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 2013
+              max_value: 2030
+
+  - name: dim_geography
+    description: "Territorial Authority dimension. One row per canonical TA (67 rows). Joins seed_ta_name_map with brz_linz__ta_boundaries for geometry + land area."
+    columns:
+      - name: ta_key
+        description: "MD5 surrogate of canonical_ta_name."
+        data_tests:
+          - not_null
+          - unique
+      - name: canonical_ta_name
+        data_tests:
+          - not_null
+          - unique
+      - name: ta_code
+        data_tests:
+          - not_null
+          - unique
+      - name: region_name
+        data_tests:
+          - not_null
+      - name: island
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['North Island', 'South Island', 'Chatham Islands']
+      - name: ta_geometry
+        data_tests:
+          - not_null
+
+  - name: dim_vehicle_model
+    description: "Vehicle make+model+submodel+body_type+motive_power combinations from MVR. Carries ev_category classification. Per-vehicle attributes (country, import_status) live on the fact."
+    columns:
+      - name: vehicle_model_key
+        data_tests:
+          - not_null
+          - unique
+      - name: ev_category
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['BEV', 'PHEV', 'HEV', 'FCEV', 'ICE']
+
+  - name: dim_station_operator
+    description: "Charging station operators (e.g. ChargeNet, BP Pulse). One row per distinct operator_name, with a cleaned form for grouping (suffix-stripped)."
+    columns:
+      - name: operator_key
+        data_tests:
+          - not_null
+          - unique
+      - name: operator_name
+        data_tests:
+          - not_null
+          - unique
+
+  - name: dim_connector_type
+    description: "Connector configurations: current_type x kW x format. One row per distinct combination."
+    columns:
+      - name: connector_type_key
+        data_tests:
+          - not_null
+          - unique
+      - name: current_type
+        data_tests:
+          - accepted_values:
+              values: ['AC', 'DC']
+      - name: kw_band
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                - "<22 kW (AC home/destination)"
+                - "22-49 kW (AC fast / DC slow)"
+                - "50-149 kW (DC fast)"
+                - "150+ kW (DC ultra-fast)"
+                - "unknown"
